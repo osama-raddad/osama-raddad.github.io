@@ -824,6 +824,21 @@ code {
   background: var(--accent);
 }
 .install-line { margin-top: 1.25rem; }
+
+/* Recovery ladder diagram in FireCrasher's card. Colours come from the tokens above. */
+.ladder { margin-top: 1.5rem; }
+.ladder svg { display: block; width: 100%; max-width: 22rem; height: auto; }
+.ladder-step { fill: var(--plate); stroke: currentColor; stroke-width: 1; }
+.ladder-label { fill: var(--ink); font-family: var(--sans); font-size: 13px; font-weight: 600; }
+.ladder-text { fill: var(--ink); font-family: var(--sans); font-size: 13px; }
+.ladder-arrow { fill: none; stroke: var(--accent); stroke-width: 1.5; }
+.ladder-tip { fill: var(--accent); }
+@media (forced-colors: active) {
+  .ladder-step { fill: Canvas; stroke: CanvasText; }
+  .ladder-label, .ladder-text { fill: CanvasText; }
+  .ladder-arrow { stroke: CanvasText; }
+  .ladder-tip { fill: CanvasText; }
+}
 .nowrap { white-space: nowrap; }
 code.wrap { white-space: normal; overflow-wrap: anywhere; }
 
