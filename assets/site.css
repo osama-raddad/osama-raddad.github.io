@@ -627,7 +627,6 @@ code {
   line-height: 1.04;
   letter-spacing: -0.012em;
 }
-.flagship .proj-h { font-size: clamp(2.375rem, 6vw, 3.625rem); }
 .proj-h .num {
   margin-right: 0; /* the space before the title is the gap */
   font-size: 1.25rem;
