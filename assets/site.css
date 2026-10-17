@@ -1155,6 +1155,7 @@ mark.api .ta, mark.api .tn { color: inherit; }
 /* One line from about 310px wide. Narrower, or with a large default font,
    it breaks at the <wbr> before "@gmail.com" rather than mid-domain. */
 .contact .contact-email a { font-size: clamp(1.3125rem, 6.2vw, 3rem); line-height: 1.1; }
+.contact .copy { grid-column: main / aside-end; justify-self: start; margin-top: 0.6rem; }
 
 @media (min-width: 48rem) {
   .contact-k { grid-column: rail; }

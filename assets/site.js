@@ -134,29 +134,69 @@
     sel.addRange(range);
   }
 
+  /* One live region serves every copy button. It is empty until a copy
+     finishes, so a repeated message is announced again; only the newest
+     message may clear it. */
+  var liveRegion = null;
+  var showTimer, clearTimer;
+  function ensureLiveRegion() {
+    if (liveRegion) return;
+    liveRegion = document.createElement('p');
+    liveRegion.className = 'vh';
+    liveRegion.setAttribute('role', 'status');
+    document.body.appendChild(liveRegion);
+  }
+  function announce(msg, ms) {
+    clearTimeout(showTimer);
+    clearTimeout(clearTimer);
+    liveRegion.textContent = '';
+    showTimer = setTimeout(function () {
+      liveRegion.textContent = msg;
+      clearTimer = setTimeout(function () {
+        if (liveRegion.textContent === msg) liveRegion.textContent = '';
+      }, ms);
+    }, 50);
+  }
+
+  /* A Copy button. `o.text()` returns what it copies. On failure `o.source`
+     is selected, so Ctrl+C or Cmd+C can finish the job. */
+  function copyButton(o) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'copy';
+    b.textContent = 'Copy';
+    b.setAttribute('aria-label', o.aria);
+    var timer;
+    function show(text, ms) {
+      b.textContent = text;
+      clearTimeout(timer);
+      timer = setTimeout(function () { b.textContent = 'Copy'; }, ms);
+    }
+    function failed() {
+      selectContents(o.source);
+      show('Copy failed', 3000);
+      announce('Copy failed. The ' + o.noun + ' is selected, so you can copy it by hand.', 5000);
+    }
+    b.addEventListener('click', function () {
+      var pending;
+      try {
+        pending = navigator.clipboard.writeText(o.text());
+      } catch (e) {
+        failed();
+        return;
+      }
+      Promise.resolve(pending).then(function () {
+        show('Copied', 2000);
+        announce(o.done, 2000);
+      }, failed);
+    });
+    return b;
+  }
+
   /* Copy buttons in each listing head. */
   function buildCopyButtons() {
     if (!navigator.clipboard || !navigator.clipboard.writeText) return;
-    var status = document.createElement('p');
-    status.className = 'vh';
-    status.setAttribute('role', 'status');
-    document.body.appendChild(status);
-
-    // One live region for every button. Empty it first so a repeated message
-    // is announced again; only the newest message may clear it.
-    var showTimer, clearTimer;
-    function announce(msg, ms) {
-      clearTimeout(showTimer);
-      clearTimeout(clearTimer);
-      status.textContent = '';
-      showTimer = setTimeout(function () {
-        status.textContent = msg;
-        clearTimer = setTimeout(function () {
-          if (status.textContent === msg) status.textContent = '';
-        }, ms);
-      }, 50);
-    }
-
+    ensureLiveRegion();
     var figures = document.querySelectorAll('figure.listing');
     Array.prototype.forEach.call(figures, function (fig) {
       var pre = fig.querySelector('pre');
@@ -165,38 +205,32 @@
       var n = fig.querySelector('.lst-n');
       var label = fig.querySelector('.lst-label');
       var name = (n ? n.textContent : 'listing') + (label ? ', ' + label.textContent : '');
-      var b = document.createElement('button');
-      b.type = 'button';
-      b.className = 'copy';
-      b.textContent = 'Copy';
-      b.setAttribute('aria-label', 'Copy ' + name);
-      var timer;
-      function show(text, ms) {
-        b.textContent = text;
-        clearTimeout(timer);
-        timer = setTimeout(function () { b.textContent = 'Copy'; }, ms);
-      }
-      function failed() {
-        // Leave the code selected so Ctrl+C or Cmd+C finishes the job.
-        selectContents(pre);
-        show('Copy failed', 3000);
-        announce('Copy failed. The code is selected, so you can copy it by hand.', 5000);
-      }
-      b.addEventListener('click', function () {
-        var pending;
-        try {
-          pending = navigator.clipboard.writeText(pre.textContent);
-        } catch (e) {
-          failed();
-          return;
-        }
-        Promise.resolve(pending).then(function () {
-          show('Copied', 2000);
-          announce((n ? n.textContent : 'Listing') + ' copied to the clipboard.', 2000);
-        }, failed);
-      });
-      tools.appendChild(b);
+      tools.appendChild(copyButton({
+        aria: 'Copy ' + name,
+        source: pre,
+        noun: 'code',
+        text: function () { return pre.textContent; },
+        done: (n ? n.textContent : 'Listing') + ' copied to the clipboard.'
+      }));
     });
+  }
+
+  /* The contact email gets one copy button after its link. Without the
+     Clipboard API no button is built, and the mailto link is all there is. */
+  function buildCopyAddress() {
+    if (!navigator.clipboard || !navigator.clipboard.writeText) return;
+    var row = document.querySelector('.contact-email');
+    var link = row && row.querySelector('a[href^="mailto:"]');
+    if (!link) return;
+    ensureLiveRegion();
+    var address = link.getAttribute('href').replace(/^mailto:/, '');
+    row.appendChild(copyButton({
+      aria: 'Copy email address',
+      source: link,
+      noun: 'address',
+      text: function () { return address; },
+      done: 'Email address copied to the clipboard.'
+    }));
   }
 
   /* Listings take a Tab stop only while they scroll sideways. The region role
@@ -352,6 +386,7 @@
     paintMeta();
     buildThemeSwitch();
     buildCopyButtons();
+    buildCopyAddress();
     fitListings();
     trackPosition();
   });
