@@ -1,3 +1,5 @@
 # osama-raddad.github.io
 
 This is the personal site of Osama Raddad, an Android Team Lead in Gothenburg: a single static page about his work on Android Automotive, his open-source Kotlin libraries (FireCrasher, Warehouse) and the Kotlin Multiplatform libraries he built at Vynatix (Holdfast, Hallmark), with his experience, writing and contact links. It is plain HTML and CSS with one small vanilla JavaScript file for progressive enhancement (theme switch, copy buttons, current-section marker); there is no framework, build step, analytics or third-party request, and the fonts are self-hosted under `assets/fonts/` with their OFL licences. To preview it locally, run `python3 -m http.server 8000` in the repository root and open http://localhost:8000/. The site deploys from the `main` branch with GitHub Pages.
+
+When the content changes, bump the date in all four places: the “Last updated” note in the About section, `dateModified` in the JSON-LD, `article:modified_time` in the head, and `lastmod` in `sitemap.xml`. The FAQ restates facts from the project sections (install lines, release status, supported platforms), so update it together with them.

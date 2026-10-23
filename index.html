@@ -6,7 +6,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <title>Osama Raddad · Android Team Lead, Gothenburg</title>
 <meta name="description" content="Osama Raddad, Android Team Lead at Vynatix in Gothenburg. Android Automotive, plus open-source Kotlin libraries: FireCrasher, Warehouse, Holdfast.">
+<meta name="author" content="Osama Raddad">
 <link rel="canonical" href="https://osama-raddad.github.io/">
+<meta property="article:modified_time" content="2026-10-22">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://osama-raddad.github.io/">
 <meta property="og:title" content="Osama Raddad · Android engineer">
@@ -34,31 +36,53 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Osama Raddad",
-  "url": "https://osama-raddad.github.io/",
-  "jobTitle": "Android Team Lead",
-  "worksFor": {
-    "@type": "Organization",
-    "name": "Vynatix",
-    "url": "https://vynatix.com/"
-  },
-  "sameAs": [
-    "https://www.linkedin.com/in/osamaraddad/",
-    "https://github.com/osama-raddad",
-    "https://medium.com/@osamaraddad"
-  ],
-  "email": "osama.s.raddad@gmail.com"
+  "@graph": [
+    {
+      "@type": "ProfilePage",
+      "@id": "https://osama-raddad.github.io/#profile",
+      "url": "https://osama-raddad.github.io/",
+      "name": "Osama Raddad · Android Team Lead, Gothenburg",
+      "inLanguage": "en",
+      "dateModified": "2026-10-22",
+      "mainEntity": { "@id": "https://osama-raddad.github.io/#person" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://osama-raddad.github.io/#person",
+      "name": "Osama Raddad",
+      "url": "https://osama-raddad.github.io/",
+      "jobTitle": "Android Team Lead",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Vynatix",
+        "url": "https://vynatix.com/"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Zarqa University"
+      },
+      "knowsAbout": ["Android", "Android Automotive", "Kotlin", "Kotlin Multiplatform"],
+      "sameAs": [
+        "https://www.linkedin.com/in/osamaraddad/",
+        "https://github.com/osama-raddad",
+        "https://medium.com/@osamaraddad"
+      ],
+      "email": "osama.s.raddad@gmail.com"
+    }
+  ]
 }
 </script>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#about">Skip to content</a>
 
-<header class="masthead grid" id="top">
+<main id="main">
+
+<!-- The masthead sits inside main, so the page's h1 and its one-line summary are part of the main content. -->
+<div class="masthead grid" id="top">
   <div class="theme-slot" data-theme-slot></div>
 
-  <h1 class="name"><span>Osama </span><span>Raddad</span></h1>
+  <h1 class="name name--stack">Osama Raddad</h1>
   <p class="role"><span class="role-a">Android Team Lead at Vynatix</span><span class="vh"> · </span><span class="role-b">Gothenburg, Sweden</span></p>
   <p class="positioning">I lead an Android team in Gothenburg, work on Android Automotive, and write Kotlin libraries for crash recovery, dependency injection and transactional state.</p>
   <p class="cta">
@@ -90,10 +114,11 @@
       <li><a href="#experience"><span class="toc-n">3</span><span class="toc-t">Experience</span></a></li>
       <li><a href="#writing"><span class="toc-n">4</span><span class="toc-t">Writing</span></a></li>
       <li><a href="#community"><span class="toc-n">5</span><span class="toc-t">Community</span></a></li>
-      <li><a href="#contact"><span class="toc-n">6</span><span class="toc-t">Get in touch</span></a></li>
+      <li><a href="#faq"><span class="toc-n">6</span><span class="toc-t">FAQ</span></a></li>
+      <li><a href="#contact"><span class="toc-n">7</span><span class="toc-t">Get in touch</span></a></li>
     </ol>
   </nav>
-</header>
+</div>
 
 <nav class="runhead grid" aria-label="Sections">
   <div class="runhead-in">
@@ -104,42 +129,42 @@
       <li><a href="#experience"><span class="rh-n">3</span> Experience</a></li>
       <li><a href="#writing"><span class="rh-n">4</span> Writing</a></li>
       <li><a href="#community"><span class="rh-n">5</span> Community</a></li>
-      <li><a href="#contact"><span class="rh-n">6</span> Get in touch</a></li>
+      <li><a href="#faq"><span class="rh-n">6</span> FAQ</a></li>
+      <li><a href="#contact"><span class="rh-n">7</span> Get in touch</a></li>
     </ol>
     <p class="rh-here" data-here aria-hidden="true" hidden></p>
     <a class="rh-toc" href="#contents">Contents</a>
   </div>
 </nav>
 
-<main id="main">
-
   <!-- 1 About -->
   <section class="sec grid" id="about" aria-labelledby="about-h">
-    <h2 class="sec-h" id="about-h"><span class="num">1</span> <span class="t">About</span></h2>
+    <h2 class="sec-h" id="about-h" data-n="1"><span class="t">About</span></h2>
     <div class="prose about-text">
       <p>I’m an Android engineer in Gothenburg and Android Team Lead at Vynatix. I work on Android Automotive. From 2019 to 2021 I worked on in-vehicle system apps for Volvo Trucks: the media core, the media player and the default launcher. Before that I spent 2017 to 2019 on ArabiaWeather’s Android apps.</p>
       <p>I also write Kotlin libraries in the open. FireCrasher recovers Android apps from uncaught exceptions instead of letting them die. Warehouse wires dependencies with a Kotlin DSL. Holdfast and Hallmark, built at Vynatix, bring transactions and validated types to Kotlin Multiplatform.</p>
     </div>
     <div class="margin about-notes">
-      <h3 class="note-h">Currently</h3>
+      <h3 class="note-h">As of October 2026</h3>
       <ul class="note-list">
         <li>Android Team Lead at <a href="https://vynatix.com/">Vynatix</a>, a small software consultancy in Gothenburg that is part of Ultra Group.</li>
         <li>Working on Holdfast, a transactional state library for Kotlin Multiplatform. It is pre-release.</li>
       </ul>
       <p class="note"><strong>Off the clock:</strong> I take photographs.</p>
       <p class="note"><strong>Languages:</strong> Arabic, English, Swedish (elementary).</p>
+      <p class="note"><strong>Last updated:</strong> <time datetime="2026-10-22">2026-10-22</time></p>
     </div>
   </section>
 
   <!-- 2 Work -->
   <section class="sec grid" id="work" aria-labelledby="work-h">
-    <h2 class="sec-h" id="work-h"><span class="num">2</span> <span class="t">Work</span></h2>
+    <h2 class="sec-h" id="work-h" data-n="2"><span class="t">Work</span></h2>
     <p class="key"><mark class="api">Highlighted</mark> names in the listings are the project’s own API.</p>
 
     <!-- 2.1 FireCrasher -->
     <article class="project" id="firecrasher" aria-labelledby="firecrasher-h">
       <p class="kicker">Android library</p>
-      <h3 class="proj-h" id="firecrasher-h"><span class="num">2.1</span> <span class="t">FireCrasher</span></h3>
+      <h3 class="proj-h" id="firecrasher-h" data-n="2.1"><span class="t">FireCrasher</span></h3>
       <p class="tagline">Catch an uncaught exception on the main thread and get the user back to a working screen.</p>
 
       <div class="status">
@@ -151,7 +176,8 @@
       </div>
 
       <div class="prose proj-body">
-        <p>FireCrasher replaces Android’s main-thread message loop with one that dispatches each message inside a try/catch. When something throws, your <code>onCrash</code> handler gets the exception first, so crash reporting still works, and then the library recovers in steps. The main-loop interception is adapted from <a href="https://github.com/mmin18/SafeLooper">SafeLooper</a> (mmin18, 2013); the recovery ladder, back-stack tracking and handler API are FireCrasher’s own. I started it in 2016 and moved most of it to Kotlin in 2019. It was modernized, and made fully Kotlin, in 2026.</p>
+        <p>FireCrasher is an Android library that catches uncaught exceptions on the main thread and recovers the app instead of letting it crash. It replaces Android’s main-thread message loop with one that dispatches each message inside a try/catch. When something throws, your <code>onCrash</code> handler gets the exception first, so crash reporting still works, and then the library recovers in steps. The main-loop interception is adapted from <a href="https://github.com/mmin18/SafeLooper">SafeLooper</a> (mmin18, 2013); the recovery ladder, back-stack tracking and handler API are FireCrasher’s own. I started it in 2016 and moved most of it to Kotlin in 2019. It was modernized, and made fully Kotlin, in 2026.</p>
+        <p><strong>How it differs:</strong> Crash reporters such as Crashlytics, Sentry and Bugsnag record a crash, but the app still dies. FireCrasher keeps it running: it passes the exception to your reporter first, then recovers.</p>
         <figure class="ladder">
           <svg viewBox="0 0 340 150" aria-hidden="true" focusable="false">
             <defs>
@@ -216,7 +242,7 @@ dependencies {
           <li><a href="https://github.com/osama-raddad/FireCrasher"><span class="vh">FireCrasher </span>Repo</a></li>
           <li><a href="https://osama-raddad.github.io/FireCrasher/"><span class="vh">FireCrasher </span>Docs</a> (3.0 API on master, not yet on JitPack)</li>
           <li><a href="https://github.com/osama-raddad/FireCrasher/tree/2.0.0">2.0.0 README</a></li>
-          <li>Article: <a href="https://medium.com/mindorks/the-wicked-android-crashes-and-how-to-disarm-them-a7609b22455b">The Wicked Android Crashes and How to Disarm them</a> (MindOrks, 2019)</li>
+          <li>Article: <a href="https://medium.com/mindorks/the-wicked-android-crashes-and-how-to-disarm-them-a7609b22455b">The Wicked Android Crashes and How to Disarm them</a> (MindOrks, <time datetime="2019-03-11">2019-03-11</time>)</li>
         </ul></dd></div>
       </dl>
     </article>
@@ -224,7 +250,7 @@ dependencies {
     <!-- 2.2 Warehouse -->
     <article class="project" id="warehouse" aria-labelledby="warehouse-h">
       <p class="kicker">Kotlin library</p>
-      <h3 class="proj-h" id="warehouse-h"><span class="num">2.2</span> <span class="t">Warehouse</span></h3>
+      <h3 class="proj-h" id="warehouse-h" data-n="2.2"><span class="t">Warehouse</span></h3>
       <p class="tagline">Dependency injection, written as a Kotlin DSL.</p>
 
       <div class="status">
@@ -235,7 +261,8 @@ dependencies {
       </div>
 
       <div class="prose proj-body">
-        <p>Warehouse wires dependencies with nested <code class="wrap">warehouse { module { factory { } } }</code> blocks and hands them out through property delegation (<code>by mainDI()</code>). A warehouse can include other warehouses, and its accessibility level (OPEN, LOCAL or ISOLATED) decides which bindings pass up to the warehouse that includes it. Each factory can be named, exposed as an interface, and limited to the classes allowed to receive it. It runs on the JVM.</p>
+        <p>Warehouse is a dependency injection library for the JVM, written as a Kotlin DSL. It wires dependencies with nested <code class="wrap">warehouse { module { factory { } } }</code> blocks and hands them out through property delegation (<code>by mainDI()</code>). A warehouse can include other warehouses, and its accessibility level (OPEN, LOCAL or ISOLATED) decides which bindings pass up to the warehouse that includes it. Each factory can be named, exposed as an interface, and limited to the classes allowed to receive it.</p>
+        <p><strong>How it differs:</strong> Dagger/Hilt and Koin are the established choices for dependency injection on Android. Warehouse is a smaller, DSL-based alternative for the JVM, and its own angle is access control: you decide which classes may receive a binding, and which bindings a warehouse passes up to the one that includes it.</p>
         <ul class="highlights">
           <li><code>injectsIn { Demo::class }</code> limits who can receive a binding. Injecting it anywhere else fails with an error that names both classes.</li>
           <li><code>@Named</code> picks between bindings of the same type, and constructor parameters resolve from the graph with <code>param()</code> or <code>param(name)</code>.</li>
@@ -291,7 +318,7 @@ dependencies {
     <!-- 2.3 Holdfast -->
     <article class="project" id="holdfast" aria-labelledby="holdfast-h">
       <p class="kicker"><span class="nowrap">Kotlin Multiplatform library ·</span> <span class="nowrap">Built at Vynatix</span></p>
-      <h3 class="proj-h" id="holdfast-h"><span class="num">2.3</span> <span class="t">Holdfast</span></h3>
+      <h3 class="proj-h" id="holdfast-h" data-n="2.3"><span class="t">Holdfast</span></h3>
       <p class="tagline">Transactional state for Kotlin Multiplatform.</p>
 
       <div class="status">
@@ -302,7 +329,8 @@ dependencies {
       </div>
 
       <div class="prose proj-body">
-        <p>A Holdfast store holds state, and its unit of consistency is the transaction. Inside <code>action { }</code> mutations are buffered and observers only see committed values. If the block throws, the whole action rolls back and nothing leaks. <code>atomic(a, b) { }</code> stretches that guarantee across stores: they all commit, or none of them do.</p>
+        <p>Holdfast is a transactional state library for Kotlin Multiplatform. A store holds state, and its unit of consistency is the transaction. Inside <code>action { }</code> mutations are buffered and observers only see committed values. If the block throws, the whole action rolls back and nothing leaks. <code>atomic(a, b) { }</code> stretches that guarantee across stores: they all commit, or none of them do.</p>
+        <p><strong>Why it exists:</strong> In a plain state holder such as <code>MutableStateFlow</code>, every write is published as soon as it is made, so an exception halfway through a multi-step update leaves half-applied state behind. Holdfast publishes once, on commit, and rolls everything back if the block throws.</p>
         <p>It grew out of Vault (December 2024), a JVM Kotlin state container on my own GitHub where <code>action { }</code> blocks already rolled back on an exception.</p>
         <ul class="highlights">
           <li><code>action { }</code> returns <code>TransactionResult.Success</code> or <code>TransactionResult.Error</code>. A failed transaction rolls back and its observers never fire.</li>
@@ -337,7 +365,7 @@ dependencies {
     <!-- 2.4 Hallmark -->
     <article class="project" id="hallmark" aria-labelledby="hallmark-h">
       <p class="kicker"><span class="nowrap">Kotlin Multiplatform library ·</span> <span class="nowrap">Built at Vynatix</span></p>
-      <h3 class="proj-h" id="hallmark-h"><span class="num">2.4</span> <span class="t">Hallmark</span></h3>
+      <h3 class="proj-h" id="hallmark-h" data-n="2.4"><span class="t">Hallmark</span></h3>
       <p class="tagline">Refinement types for Kotlin Multiplatform.</p>
 
       <div class="status">
@@ -392,7 +420,7 @@ dependencies {
     <!-- 2.5 gentle-palette -->
     <article class="project" id="gentle-palette" aria-labelledby="gentle-palette-h">
       <p class="kicker">Android library</p>
-      <h3 class="proj-h" id="gentle-palette-h"><span class="num">2.5</span> <span class="t">gentle-palette</span></h3>
+      <h3 class="proj-h" id="gentle-palette-h" data-n="2.5"><span class="t">gentle-palette</span></h3>
       <p class="tagline">Snap any color to the nearest color in a palette.</p>
 
       <div class="status">
@@ -404,7 +432,7 @@ dependencies {
       </div>
 
       <div class="prose proj-body">
-        <p>Give it a color int and an array of <code>#RRGGBB</code> strings and you get back the closest entry. It was made to sit next to Android’s Palette library: take the dominant color of an image and round it to the nearest flat or Material color. The released 0.1.3 uses a callback and plain RGB distance. Master was modernized in 2026 with a direct <code>round()</code> call and redmean-weighted distance, and isn’t released yet.</p>
+        <p>gentle-palette is an Android library that snaps a color to the nearest color in a palette: give it a color int and an array of <code>#RRGGBB</code> strings and you get back the closest entry. It was made to sit next to Android’s Palette library: take the dominant color of an image and round it to the nearest flat or Material color. The released 0.1.3 uses a callback and plain RGB distance. Master was modernized in 2026 with a direct <code>round()</code> call and redmean-weighted distance, and isn’t released yet.</p>
         <ul class="highlights">
           <li>Five built-in palettes: flat, Material, social brand colors, Fluent and Metro.</li>
           <li>No runtime dependencies.</li>
@@ -444,7 +472,7 @@ dependencies {
     <!-- 2.6 vin-dating-app -->
     <article class="project" id="vin-dating-app" aria-labelledby="vin-dating-app-h">
       <p class="kicker">Kotlin Multiplatform app (proof of concept)</p>
-      <h3 class="proj-h" id="vin-dating-app-h"><span class="num">2.6</span> <span class="t">vin-dating-app</span></h3>
+      <h3 class="proj-h" id="vin-dating-app-h" data-n="2.6"><span class="t">vin-dating-app</span></h3>
       <p class="tagline">One Compose Multiplatform UI on Android, iOS, desktop and the web.</p>
 
       <div class="status">
@@ -456,6 +484,7 @@ dependencies {
 
       <div class="prose proj-body">
         <p>A proof of concept for a dating app’s UI flow, written once in Compose Multiplatform. It goes from onboarding to phone number entry, a six-digit code screen, profile setup and a tabbed home screen, with sample data and no backend. The same module builds for Android, iOS through a SwiftUI host, desktop JVM, and the browser through Kotlin/Wasm.</p>
+        <p><strong>Why it exists:</strong> It is a demonstration, not a product: one Compose Multiplatform UI flow running on Android, iOS, desktop and the web from a single module, with no backend behind it.</p>
         <ul class="highlights">
           <li>One <code>:composeApp</code> module: <code>commonMain</code> plus Android, iOS, desktop and wasmJs source sets.</li>
           <li>Navigation is a sealed <code>Screen</code> class driven by state, with no navigation library.</li>
@@ -490,7 +519,7 @@ dependencies {
 
     <!-- 2.7 Older work -->
     <section class="archive" id="older-work" aria-labelledby="older-work-h">
-      <h3 class="proj-h" id="older-work-h"><span class="num">2.7</span> <span class="t">Older work</span></h3>
+      <h3 class="proj-h" id="older-work-h" data-n="2.7"><span class="t">Older work</span></h3>
       <ul class="archive-list">
         <li><a href="https://github.com/osama-raddad/Slick-Slider">Slick-Slider</a> <span class="yr">(2018)</span>: auto-playing timeline slider views for Android, with right-to-left variants.</li>
         <li><a href="https://github.com/osama-raddad/Shaper">Shaper</a> <span class="yr">(2018)</span>: splits Activities and Fragments into lifecycle-aware components, each with its own RxJava disposables.</li>
@@ -501,14 +530,17 @@ dependencies {
 
   <!-- 3 Experience -->
   <section class="sec grid" id="experience" aria-labelledby="experience-h">
-    <h2 class="sec-h" id="experience-h"><span class="num">3</span> <span class="t">Experience</span></h2>
+    <h2 class="sec-h" id="experience-h" data-n="3"><span class="t">Experience</span></h2>
     <p class="sec-intro">Over ten years of Android engineering.</p>
     <ol class="timeline">
       <li class="entry">
         <h3 class="entry-h"><span class="when">Now</span><span class="vh"> · </span><span class="what">Vynatix, Gothenburg</span></h3>
         <div class="entry-body prose">
           <p class="entry-role">Role: Android Team Lead</p>
-          <p>I work on Android Automotive. Holdfast and Hallmark, two pre-release Kotlin Multiplatform libraries, were built here and are open source on the Vynatix GitHub.</p>
+          <ul class="entry-list">
+            <li>I work on Android Automotive.</li>
+            <li>Holdfast and Hallmark, two pre-release Kotlin Multiplatform libraries, were built here and are open source on the Vynatix GitHub.</li>
+          </ul>
           <p class="entry-link"><a href="https://vynatix.com/">vynatix.com</a></p>
         </div>
       </li>
@@ -539,55 +571,66 @@ dependencies {
 
   <!-- 4 Writing -->
   <section class="sec grid" id="writing" aria-labelledby="writing-h">
-    <h2 class="sec-h" id="writing-h"><span class="num">4</span> <span class="t">Writing</span></h2>
+    <h2 class="sec-h" id="writing-h" data-n="4"><span class="t">Writing</span></h2>
+    <h3 class="sub-h">Recent, 2023–2025</h3>
     <ol class="writing">
-      <li class="piece">
-        <p class="piece-meta"><time datetime="2025-08-25">2025-08-25</time> <span class="pub">Medium</span></p>
+      <li class="piece" itemscope itemtype="https://schema.org/Article">
+        <meta itemprop="author" content="Osama Raddad">
+        <p class="piece-meta"><time datetime="2025-08-25" itemprop="datePublished">2025-08-25</time> <span class="pub" itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><span itemprop="name">Medium</span></span></p>
         <div class="piece-body">
-          <p class="piece-title"><a href="https://medium.com/@osamaraddad/context-engineering-the-architecture-of-ai-understanding-8ff088a42eeb">Context Engineering: The Architecture of AI Understanding</a></p>
-          <p class="piece-sum">Treats a model’s context as something you assemble on purpose, from instructions, knowledge, tools, memory, state and the query, then covers RAG, memory, compression and security.</p>
+          <p class="piece-title"><a href="https://medium.com/@osamaraddad/context-engineering-the-architecture-of-ai-understanding-8ff088a42eeb" itemprop="url"><span itemprop="headline">Context Engineering: The Architecture of AI Understanding</span></a></p>
+          <p class="piece-sum" itemprop="description">Treats a model’s context as something you assemble on purpose, from instructions, knowledge, tools, memory, state and the query, then covers RAG, memory, compression and security.</p>
         </div>
       </li>
-      <li class="piece">
-        <p class="piece-meta"><time datetime="2025-08-25">2025-08-25</time> <span class="pub">Medium</span></p>
+      <li class="piece" itemscope itemtype="https://schema.org/Article">
+        <meta itemprop="author" content="Osama Raddad">
+        <p class="piece-meta"><time datetime="2025-08-25" itemprop="datePublished">2025-08-25</time> <span class="pub" itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><span itemprop="name">Medium</span></span></p>
         <div class="piece-body">
-          <p class="piece-title"><a href="https://medium.com/@osamaraddad/the-human-compiler-485a940568ce">The Human Compiler</a></p>
-          <p class="piece-sum">An essay on the team as the compiler that turns requirements into software, opening with the 13 people behind Instagram.</p>
+          <p class="piece-title"><a href="https://medium.com/@osamaraddad/the-human-compiler-485a940568ce" itemprop="url"><span itemprop="headline">The Human Compiler</span></a></p>
+          <p class="piece-sum" itemprop="description">An essay on the team as the compiler that turns requirements into software, opening with the 13 people behind Instagram.</p>
         </div>
       </li>
-      <li class="piece">
-        <p class="piece-meta"><time datetime="2025-05-20">2025-05-20</time> <span class="pub">Medium</span></p>
+      <li class="piece" itemscope itemtype="https://schema.org/Article">
+        <meta itemprop="author" content="Osama Raddad">
+        <p class="piece-meta"><time datetime="2025-05-20" itemprop="datePublished">2025-05-20</time> <span class="pub" itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><span itemprop="name">Medium</span></span></p>
         <div class="piece-body">
-          <p class="piece-title"><a href="https://medium.com/@osamaraddad/stream-what-you-hear-android-to-windows-audio-257a7677e4b9">Stream what you hear: Android to Windows audio</a></p>
-          <p class="piece-sum">Streaming an Android device’s audio to a Windows PC with scrcpy, with sndcpy and AudioRelay for older devices.</p>
+          <p class="piece-title"><a href="https://medium.com/@osamaraddad/stream-what-you-hear-android-to-windows-audio-257a7677e4b9" itemprop="url"><span itemprop="headline">Stream what you hear: Android to Windows audio</span></a></p>
+          <p class="piece-sum" itemprop="description">Streaming an Android device’s audio to a Windows PC with scrcpy, with sndcpy and AudioRelay for older devices.</p>
         </div>
       </li>
-      <li class="piece">
-        <p class="piece-meta"><time datetime="2023-05-23">2023-05-23</time> <span class="pub">Medium</span></p>
+      <li class="piece" itemscope itemtype="https://schema.org/Article">
+        <meta itemprop="author" content="Osama Raddad">
+        <p class="piece-meta"><time datetime="2023-05-23" itemprop="datePublished">2023-05-23</time> <span class="pub" itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><span itemprop="name">Medium</span></span></p>
         <div class="piece-body">
-          <p class="piece-title"><a href="https://medium.com/@osamaraddad/mastering-workmanager-in-android-669561ffab7f">Mastering WorkManager in Android</a></p>
-          <p class="piece-sum">One-time and periodic work, constraints, chaining, and watching WorkInfo with Jetpack WorkManager.</p>
+          <p class="piece-title"><a href="https://medium.com/@osamaraddad/mastering-workmanager-in-android-669561ffab7f" itemprop="url"><span itemprop="headline">Mastering WorkManager in Android</span></a></p>
+          <p class="piece-sum" itemprop="description">One-time and periodic work, constraints, chaining, and watching WorkInfo with Jetpack WorkManager.</p>
         </div>
       </li>
-      <li class="piece">
-        <p class="piece-meta"><time datetime="2023-05-23">2023-05-23</time> <span class="pub">MindOrks</span></p>
+      <li class="piece" itemscope itemtype="https://schema.org/Article">
+        <meta itemprop="author" content="Osama Raddad">
+        <p class="piece-meta"><time datetime="2023-05-23" itemprop="datePublished">2023-05-23</time> <span class="pub" itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><span itemprop="name">MindOrks</span></span></p>
         <div class="piece-body">
-          <p class="piece-title"><a href="https://medium.com/mindorks/the-gerrit-playbook-a-guide-for-git-savvy-developers-d23d858913c5">The Gerrit Playbook</a></p>
-          <p class="piece-sum">Gerrit’s review workflow for people who already know Git: pushing to refs/for, amending a change, review scores and rebasing.</p>
+          <p class="piece-title"><a href="https://medium.com/mindorks/the-gerrit-playbook-a-guide-for-git-savvy-developers-d23d858913c5" itemprop="url"><span itemprop="headline">The Gerrit Playbook</span></a></p>
+          <p class="piece-sum" itemprop="description">Gerrit’s review workflow for people who already know Git: pushing to refs/for, amending a change, review scores and rebasing.</p>
         </div>
       </li>
-      <li class="piece">
-        <p class="piece-meta"><time datetime="2020-09-10">2020-09-10</time> <span class="pub">Medium</span></p>
+    </ol>
+    <h3 class="sub-h">Archive, 2019–2020</h3>
+    <ol class="writing">
+      <li class="piece" itemscope itemtype="https://schema.org/Article">
+        <meta itemprop="author" content="Osama Raddad">
+        <p class="piece-meta"><time datetime="2020-09-10" itemprop="datePublished">2020-09-10</time> <span class="pub" itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><span itemprop="name">Medium</span></span></p>
         <div class="piece-body">
-          <p class="piece-title"><a href="https://medium.com/@osamaraddad/storage-options-in-android-56c9e1b9d495">Storage options in Android</a></p>
-          <p class="piece-sum">Content providers, shared preferences, files and SQLite, with everyday analogies for content providers and shared preferences.</p>
+          <p class="piece-title"><a href="https://medium.com/@osamaraddad/storage-options-in-android-56c9e1b9d495" itemprop="url"><span itemprop="headline">Storage options in Android</span></a></p>
+          <p class="piece-sum" itemprop="description">Content providers, shared preferences, files and SQLite, with everyday analogies for content providers and shared preferences.</p>
         </div>
       </li>
-      <li class="piece">
-        <p class="piece-meta"><time datetime="2019-03-11">2019-03-11</time> <span class="pub">MindOrks</span></p>
+      <li class="piece" itemscope itemtype="https://schema.org/Article">
+        <meta itemprop="author" content="Osama Raddad">
+        <p class="piece-meta"><time datetime="2019-03-11" itemprop="datePublished">2019-03-11</time> <span class="pub" itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><span itemprop="name">MindOrks</span></span></p>
         <div class="piece-body">
-          <p class="piece-title"><a href="https://medium.com/mindorks/the-wicked-android-crashes-and-how-to-disarm-them-a7609b22455b">The Wicked Android Crashes and How to Disarm them</a></p>
-          <p class="piece-sum">What a crash costs you with users, and how FireCrasher’s three recovery levels keep the app running. <a href="#firecrasher">See FireCrasher, section 2.1</a></p>
+          <p class="piece-title"><a href="https://medium.com/mindorks/the-wicked-android-crashes-and-how-to-disarm-them-a7609b22455b" itemprop="url"><span itemprop="headline">The Wicked Android Crashes and How to Disarm them</span></a></p>
+          <p class="piece-sum"><span itemprop="description">What a crash costs you with users, and how FireCrasher’s three recovery levels keep the app running.</span> <a href="#firecrasher">See FireCrasher, section 2.1</a></p>
         </div>
       </li>
     </ol>
@@ -596,7 +639,7 @@ dependencies {
 
   <!-- 5 Community -->
   <section class="sec grid" id="community" aria-labelledby="community-h">
-    <h2 class="sec-h" id="community-h"><span class="num">5</span> <span class="t">Community</span></h2>
+    <h2 class="sec-h" id="community-h" data-n="5"><span class="t">Community</span></h2>
     <ul class="community">
       <li><span class="what">ArabiaWeather CEO Award</span><span class="vh">, </span><span class="when">2018 and 2019</span></li>
       <li><span class="what">Startup Weekend, second place</span><span class="vh">, </span><span class="when">2017 and 2018</span></li>
@@ -607,9 +650,64 @@ dependencies {
     </ul>
   </section>
 
-  <!-- 6 Contact -->
+  <!-- 6 FAQ -->
+  <section class="sec grid" id="faq" aria-labelledby="faq-h" itemscope itemtype="https://schema.org/FAQPage">
+    <h2 class="sec-h" id="faq-h" data-n="6"><span class="t">FAQ</span></h2>
+    <div class="faq">
+      <div class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <h3 class="q" itemprop="name">Who is Osama Raddad?</h3>
+        <div class="a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <p itemprop="text">Osama Raddad is an Android engineer in Gothenburg, Sweden, and Android Team Lead at <a href="https://vynatix.com/">Vynatix</a>, a small software consultancy that is part of Ultra Group. The work is Android Automotive. Earlier work includes in-vehicle system apps for Volvo Trucks (2019–2021) and ArabiaWeather’s Android apps (2017–2019). Open-source Kotlin libraries include <a href="#firecrasher">FireCrasher</a>, <a href="#warehouse">Warehouse</a>, <a href="#holdfast">Holdfast</a> and <a href="#hallmark">Hallmark</a>.</p>
+        </div>
+      </div>
+      <div class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <h3 class="q" itemprop="name">What is FireCrasher?</h3>
+        <div class="a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <p itemprop="text">FireCrasher is an Android library that catches uncaught exceptions on the main thread and recovers the app instead of letting it crash. The first two crashes restart the activity. The third goes back if there is a screen behind it, and relaunches the app from its launcher activity if there isn’t. See <a href="#firecrasher">FireCrasher, section 2.1</a>.</p>
+        </div>
+      </div>
+      <div class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <h3 class="q" itemprop="name">How do I install FireCrasher?</h3>
+        <div class="a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <p itemprop="text">From JitPack: add the JitPack repository and <code class="wrap">com.github.<span class="nowrap">osama-raddad</span>:<wbr>FireCrasher:<wbr>2.0.0</code>, the newest release with a clean JitPack build. The 3.0 API is on master and isn’t in a tagged release yet. The full snippet is Listing 2 in <a href="#firecrasher">FireCrasher, section 2.1</a>.</p>
+        </div>
+      </div>
+      <div class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <h3 class="q" itemprop="name">Does FireCrasher replace Crashlytics, Sentry or Bugsnag?</h3>
+        <div class="a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <p itemprop="text">No. Crash reporters record a crash, but the app still dies. FireCrasher keeps the app running, and your <code>onCrash</code> handler gets each exception first, so you can send it to Crashlytics, Sentry or Bugsnag and then call <code>recover()</code>.</p>
+        </div>
+      </div>
+      <div class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <h3 class="q" itemprop="name">What is Warehouse, and how does it compare with Dagger and Koin?</h3>
+        <div class="a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <p itemprop="text">Warehouse is a dependency injection library for the JVM, written as a Kotlin DSL: dependencies are wired with nested <code class="wrap">warehouse { module { factory { } } }</code> blocks and handed out through property delegation. Dagger/Hilt and Koin are the established choices on Android. Warehouse is a smaller, DSL-based alternative, and its own angle is access control: <code>injectsIn { }</code> limits which classes may receive a binding, and a warehouse’s accessibility level decides which bindings pass up to the warehouse that includes it. See <a href="#warehouse">Warehouse, section 2.2</a>.</p>
+        </div>
+      </div>
+      <div class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <h3 class="q" itemprop="name">What is Holdfast, and can I use it yet?</h3>
+        <div class="a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <p itemprop="text">Holdfast is a transactional state library for Kotlin Multiplatform: changes inside an <code>action { }</code> block either all commit or all roll back, and <code>atomic()</code> extends that across stores. It is pre-release and not yet published. See <a href="#holdfast">Holdfast, section 2.3</a>.</p>
+        </div>
+      </div>
+      <div class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <h3 class="q" itemprop="name">Why use Holdfast instead of a plain MutableStateFlow?</h3>
+        <div class="a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <p itemprop="text">In a plain <code>MutableStateFlow</code>, every write is published as soon as it is made, so an exception halfway through a multi-step update leaves half-applied state behind. Holdfast buffers the writes inside <code>action { }</code>, publishes once on commit, and rolls everything back if the block throws.</p>
+        </div>
+      </div>
+      <div class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <h3 class="q" itemprop="name">Which platforms does Holdfast support?</h3>
+        <div class="a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <p itemprop="text">Holdfast is for Kotlin Multiplatform: JVM, Android and iOS. CI runs its tests on the JVM, on Android (host tests) and on the iOS simulator, and the wasmJs target is experimental. Separate modules cover coroutines (Flow and StateFlow), Compose and tests.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 Contact -->
   <section class="sec grid" id="contact" aria-labelledby="contact-h">
-    <h2 class="sec-h" id="contact-h"><span class="num">6</span> <span class="t">Get in touch</span></h2>
+    <h2 class="sec-h" id="contact-h" data-n="7"><span class="t">Get in touch</span></h2>
     <p class="sec-intro">If you have a question about one of these libraries, or want to work together, email me.</p>
     <ul class="contact">
       <li class="contact-email"><span class="contact-k">Email</span><a href="mailto:osama.s.raddad@gmail.com" aria-label="osama.s.raddad@gmail.com">osama.s.<wbr>raddad<wbr>@gmail.com</a></li>
@@ -624,7 +722,7 @@ dependencies {
 <footer class="colophon grid">
   <div class="colophon-inner">
     <p class="copyright">© 2026 Osama Raddad</p>
-    <p class="stats">Stats as of October 2026</p>
+    <p class="stats">Stats and project statuses as of October 2026</p>
     <p class="about-page">A single static page on GitHub Pages. Each count links to its live GitHub page.</p>
   </div>
 </footer>

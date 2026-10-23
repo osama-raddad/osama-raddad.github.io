@@ -259,6 +259,9 @@ code {
   letter-spacing: -0.028em;
 }
 .name span { display: block; }
+/* One text node, so the name reads "Osama Raddad" everywhere. As wide as its
+   longest word, so each name takes its own line. */
+.name--stack { width: min-content; max-width: 100%; }
 
 .role {
   margin-top: 1.6rem;
@@ -496,9 +499,9 @@ code {
   .rh-here[hidden] + .rh-toc,
   .rh-here:not([data-depth="2"]) + .rh-toc { margin-left: auto; }
 }
-/* 64-70rem: the six links fill the 46.5rem head, so the project label waits for 70rem. */
+/* 64-70rem: the seven links fill the 46.5rem head, so the project label waits for 70rem. */
 @media (min-width: 64rem) and (max-width: 69.99rem) {
-  .rh-links { gap: 0.25rem 0.9rem; margin-left: 0.5rem; }
+  .rh-links { gap: 0.25rem 0.65rem; margin-left: 0.25rem; }
   .rh-here { display: none; }
   .rh-here + .rh-toc { margin-left: auto; }
 }
@@ -520,11 +523,17 @@ code {
   line-height: 1.05;
   letter-spacing: -0.012em;
 }
-.sec-h .num {
-  margin-right: 0.22em; /* plus the space before the title */
+/* The number comes from data-n, so a heading's own text is just its title. */
+.sec-h::before,
+.proj-h::before {
+  content: attr(data-n);
   color: var(--accent);
   font-variant-numeric: tabular-nums;
 }
+.sec-h::before { margin-right: 0.22em; /* plus the space before the title */ }
+/* The space the markup used to carry between the number and the title. */
+.sec-h .t::before,
+.proj-h .t::before { content: " "; }
 
 .sec-intro {
   margin-top: 1.5rem;
@@ -545,13 +554,13 @@ code {
     grid-template-columns: subgrid;
     align-items: baseline;
   }
-  .sec-h .num { grid-column: rail; margin: 0; }
+  .sec-h::before { grid-column: rail; margin: 0; }
   .sec-h .t { grid-column: main / aside-end; }
 }
 
 /* About */
 
-.runhead + main > #about { padding-top: calc(var(--sec-space) * 0.6); }
+.runhead + #about { padding-top: calc(var(--sec-space) * 0.6); }
 
 .about-text { margin-top: 2.25rem; }
 .about-text p:first-child {
@@ -565,7 +574,8 @@ code {
   font-size: 0.9375rem;
   line-height: 1.55;
 }
-.note-h {
+.note-h,
+.sub-h {
   font-size: 1.125rem;
   font-style: italic;
   color: var(--ink-2);
@@ -627,12 +637,10 @@ code {
   line-height: 1.04;
   letter-spacing: -0.012em;
 }
-.proj-h .num {
+.proj-h::before {
   margin-right: 0; /* the space before the title is the gap */
   font-size: 1.25rem;
   letter-spacing: 0;
-  color: var(--accent);
-  font-variant-numeric: tabular-nums;
 }
 .archive .proj-h { margin-top: 0; }
 
@@ -653,7 +661,7 @@ code {
     grid-template-columns: subgrid;
     align-items: baseline;
   }
-  .proj-h .num { grid-column: rail; margin: 0; }
+  .proj-h::before { grid-column: rail; margin: 0; }
   .proj-h .t { grid-column: main; }
 }
 
@@ -1091,6 +1099,10 @@ mark.api .ta, mark.api .tn { color: inherit; }
   color: var(--ink-2);
 }
 .more { margin-top: 1.75rem; font-weight: 600; }
+/* Writing is two dated groups, each under its own small heading. */
+.sub-h { margin-top: 2.5rem; }
+.writing + .sub-h { margin-top: 3rem; }
+.sub-h + .writing { margin-top: 0.75rem; }
 
 @media (min-width: 48rem) {
   .piece-meta { grid-column: rail; padding-top: 0.3rem; }
@@ -1122,6 +1134,28 @@ mark.api .ta, mark.api .tn { color: inherit; }
   font-size: 0.9375rem;
   font-variant-numeric: tabular-nums;
 }
+
+/* ---------- FAQ ---------- */
+
+.faq {
+  grid-column: rail-start / aside-end;
+  display: grid;
+  grid-template-columns: subgrid;
+  margin-top: 2.5rem;
+}
+.qa {
+  grid-column: rail-start / aside-end;
+  display: grid;
+  grid-template-columns: subgrid;
+  padding-block: 1.2rem 1.35rem;
+  border-top: 1px solid var(--rule);
+}
+.qa > * { grid-column: main; }
+.q {
+  font-size: clamp(1.25rem, 2.2vw, 1.4375rem);
+  line-height: 1.25;
+}
+.a { margin-top: 0.5rem; }
 
 /* ---------- Contact ---------- */
 
@@ -1301,7 +1335,7 @@ mark.api .ta, mark.api .tn { color: inherit; }
 
   /* One column in plain block flow: grid rows split badly across pages. */
   .grid, .project, .archive, .figures, .timeline, .entry, .writing, .piece,
-  .contact, .contact li, .sec-h, .proj-h, .entry-h, .listing.install { display: block; }
+  .faq, .qa, .contact, .contact li, .sec-h, .proj-h, .entry-h, .listing.install { display: block; }
   .contact-k { display: block; }
   /* After the line above: .runhead is also a .grid. */
   .theme-slot, .copy, .skip, .cta, .runhead { display: none; }
@@ -1319,7 +1353,7 @@ mark.api .ta, mark.api .tn { color: inherit; }
   /* Keep things whole, and headings with what follows them. The heading lines
      are break-inside: avoid too: otherwise Chrome prefers splitting a tagline
      to breaking cleanly before the article. */
-  .listing, .meta > div, .entry, .piece, .community li, .contact li, .highlights li,
+  .listing, .meta > div, .entry, .piece, .qa, .community li, .contact li, .highlights li,
   .entry-list li, .archive-list li, .quick-facts, .toc, .status, .install-line, .colophon,
   .kicker, .proj-h, .sec-h, .tagline, .sec-intro {
     break-inside: avoid;
