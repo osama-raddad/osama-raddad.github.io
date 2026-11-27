@@ -1,0 +1,641 @@
+/* ==========================================================================
+   Vynatix Design System — Forest Heritage v1.0
+   colors_and_type.css
+
+   The tokens live in tokens.json, which the Design System page reads and
+   serves as tokens.css: the colours (light and dark themes), the font
+   files and families, spacing, radii, shadows, the type scale, leading,
+   tracking, breakpoints and container widths. Link tokens.css first:
+
+     <link rel="stylesheet" href="tokens.css">
+     <link rel="stylesheet" href="colors_and_type.css">
+
+   This file keeps what tokens.json has no place for: motion, the glass
+   blur filters, the reduced-transparency and reduced-motion overrides,
+   the reset, the semantic helpers (h1, h2, p, code, etc.) and the
+   components (buttons, cards, glass surfaces, containers). Its earlier
+   version, with every value in it, is archived/colors_and_type.css.
+
+   Always reach for semantic role tokens first
+   (var(--md-sys-color-primary), var(--text-body)): they hold a value in
+   every theme. Reach for a theme's raw palette (var(--color-forest),
+   var(--teal-600), var(--mono-charcoal-900)) only when you are creating
+   brand-specific artwork for that theme and the role tokens cannot
+   express the intent.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Brand anchors and tonal palettes: tokens.json (color)
+   2. Material 3 system color roles and convenience aliases: tokens.json
+      (color, light and dark themes)
+
+   Six themes share the roles: Forest Heritage (light, dark),
+   Transformative Teal (teal-light, teal-dark) and Stockholm Monochrome
+   + Bronze (mono-light, mono-dark). The palettes are color-*, forest-*,
+   bronze-*, neutral-* and error-* (Forest), teal-*, cloud-*, champagne-*
+   and grey-* (Teal) and mono-* (Monochrome).
+
+   --text-body and --text-display are the body and display text colours,
+   and --text-accent is the accent colour for text below 24px (Bronze in
+   Forest and Monochrome, deep Champagne in Teal). The type sizes that
+   once shared the first two names are --text-body-md and
+   --text-display-lg (tokens.json, typeScale).
+   -------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------
+   3. Liquid Glass — chrome and overlays only, never body content.
+      The tints are in tokens.json (color) and the specular edges in
+      tokens.json (shadow); the blur filters stay here.
+   -------------------------------------------------------------------------- */
+
+:root {
+  --glass-blur-ultra-thin: blur(20px) saturate(140%);
+  --glass-blur-thin:       blur(32px) saturate(160%);
+  --glass-blur-regular:    blur(48px) saturate(180%);
+  --glass-blur-thick:      blur(64px) saturate(180%);
+  --glass-blur-chrome:     blur(80px) saturate(180%);
+}
+
+/* --------------------------------------------------------------------------
+   4. Themes: Forest Heritage (light, dark), Transformative Teal
+      (teal-light, teal-dark) and Stockholm Monochrome + Bronze
+      (mono-light, mono-dark), all in tokens.json (color.themes). Set
+      data-theme on the root element, or on any element to re-skin just
+      that subtree. Each dark theme is a parallel environment, not an
+      inverted light theme. Section 10 maps each theme's typefaces.
+   -------------------------------------------------------------------------- */
+
+:root, [data-theme$="light"] {
+  color-scheme: light;
+  --icon-grade: var(--icon-grade-light);
+  --glass-specular: var(--glass-specular-light);
+}
+[data-theme$="dark"] {
+  color-scheme: dark;
+  --icon-grade: var(--icon-grade-dark);
+  --glass-specular: var(--glass-specular-dark);
+}
+
+/* --------------------------------------------------------------------------
+   5. Reduced transparency — swap glass for solid surface tokens
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-transparency: reduce) {
+  :root {
+    --glass-tint-primary:   var(--md-sys-color-primary);
+    --glass-tint-surface:   var(--md-sys-color-surface-container);
+    --glass-tint-accent:    var(--md-sys-color-tertiary);
+    --glass-blur-ultra-thin: none;
+    --glass-blur-thin:       none;
+    --glass-blur-regular:    none;
+    --glass-blur-thick:      none;
+    --glass-blur-chrome:     none;
+    --glass-specular-light:  inset 0 0 0 transparent;
+    --glass-specular-dark:   inset 0 0 0 transparent;
+  }
+  .glass--primary { color: var(--md-sys-color-on-primary); }
+  .glass--accent  { color: var(--md-sys-color-on-tertiary); }
+}
+
+/* --------------------------------------------------------------------------
+   6. Spacing scale, 7. corner radii and 8. elevation shadows (light and
+      dark): tokens.json (spacing, radius, shadow)
+   -------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------
+   9. Motion
+   -------------------------------------------------------------------------- */
+
+:root {
+  --duration-instant:    50ms;
+  --duration-quick:      100ms;
+  --duration-short:      200ms;
+  --duration-standard:   240ms;  /* the workhorse */
+  --duration-medium:     300ms;
+  --duration-long:       500ms;
+  --duration-extended:   700ms;
+  --duration-deliberate: 1000ms;
+
+  --ease-standard:              cubic-bezier(0.2, 0.0, 0,    1.0);
+  --ease-emphasized:            cubic-bezier(0.2, 0.0, 0,    1.0);
+  --ease-standard-accelerate:   cubic-bezier(0.3, 0.0, 1.0,  1.0);
+  --ease-standard-decelerate:   cubic-bezier(0.0, 0.0, 0.0,  1.0);
+  --ease-emphasized-accelerate: cubic-bezier(0.3, 0.0, 0.8,  0.15);
+  --ease-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1.0);
+
+  /* Vynatix house default — calmer than M3 reference */
+  --ease-vynatix: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-instant:    1ms;
+    --duration-quick:      1ms;
+    --duration-short:      1ms;
+    --duration-standard:   1ms;
+    --duration-medium:     1ms;
+    --duration-long:       100ms;
+    --duration-extended:   100ms;
+    --duration-deliberate: 100ms;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   10. Typography: Aptos, Geist, Fraunces, Instrument Serif and
+       JetBrains Mono (self-hosted)
+   --------------------------------------------------------------------------
+   Coordinated families, all served from fonts/:
+
+     - Fraunces ..... display headlines + editorial italic. Variable
+                      axes: opsz 9..144, wght 100..900, SOFT 0..100,
+                      WONK 0..1. The brand voice.
+     - Aptos ........ body, navigation, microcopy. The everyday voice.
+     - Geist ........ eyebrows, UI numerals, any neutral-grotesque
+                      moment. Variable weight axis 100..900. The system
+                      voice; the body face in Teal and Monochrome.
+     - Instrument Serif  Transformative Teal's display and editorial
+                      face, regular and italic.
+     - JetBrains Mono  code and tabular data in every theme.
+     - Material Symbols Outlined  the icon font (section 18).
+
+   The @font-face rules, the --font-* families, the type scale, the line
+   heights and the tracking are in tokens.json (type, typeScale, leading,
+   tracking) and declared by tokens.css.
+   -------------------------------------------------------------------------- */
+
+/* Per-theme faces. Forest: Fraunces for display and editorial, Aptos for
+   body. Teal: Instrument Serif for display and editorial, Geist for body
+   and for H3 and smaller. Monochrome: Geist for display and body (its spec
+   names Söhne, which is not licensed here) and Fraunces for editorial
+   type. The stacks are in tokens.json (type.families: fraunces, aptos,
+   sans, display-teal); only the mapping is here, set on every theme id so
+   a nested data-theme gets its own faces, and the compiled .type-*
+   classes follow it. */
+[data-theme="light"], [data-theme="dark"] {
+  --font-display: var(--font-fraunces);
+  --font-editorial: var(--font-fraunces);
+  --font-body: var(--font-aptos);
+  --font-subhead: var(--font-fraunces);
+  font-synthesis-weight: auto;
+}
+[data-theme^="teal"] {
+  --font-display: var(--font-display-teal);
+  --font-editorial: var(--font-display-teal);
+  --font-body: var(--font-sans);
+  --font-subhead: var(--font-sans);   /* Teal sets H3 and smaller in Geist */
+  font-synthesis-weight: none;        /* Instrument Serif ships one weight: no faux bold */
+}
+[data-theme^="mono"] {
+  --font-display: var(--font-sans);   /* the spec's Söhne display, Geist standing in */
+  --font-editorial: var(--font-fraunces);
+  --font-body: var(--font-sans);
+  --font-subhead: var(--font-sans);
+  font-synthesis-weight: auto;
+}
+
+/* --------------------------------------------------------------------------
+   11. Reset + canonical document defaults
+   -------------------------------------------------------------------------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 96px;       /* WCAG 2.4.11 — sticky header reserve */
+}
+
+body {
+  margin: 0;
+  background: var(--md-sys-color-background);
+  color: var(--text-body);
+  font-family: var(--font-body);
+  font-size: var(--text-body-md);
+  line-height: var(--leading-normal);
+  font-weight: 400;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'ss01' 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  text-wrap: pretty;
+  accent-color: var(--indicator);
+}
+
+::selection {
+  background: var(--selection-bg);
+  color: var(--selection-fg);
+}
+
+/* --------------------------------------------------------------------------
+   12. Headings + body type — semantic helpers
+   -------------------------------------------------------------------------- */
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-family: var(--font-display);
+  color: var(--text-display);
+  font-weight: 500;
+  font-variation-settings: 'opsz' 144, 'SOFT' 30;
+  letter-spacing: var(--tracking-headline);
+  text-wrap: balance;
+}
+h1, h2 { font-weight: 500; }
+h3, h4, h5, h6 { font-weight: 600; font-family: var(--font-subhead, var(--font-display)); }
+h1 {
+  font-size: clamp(40px, 6vw, var(--text-h1));
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-display);
+}
+h2 {
+  font-size: clamp(32px, 5vw, var(--text-h2));
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-display);
+}
+h3 {
+  font-size: clamp(28px, 4vw, var(--text-h3));
+  line-height: var(--leading-headline);
+}
+h4 { font-size: var(--text-h4); line-height: var(--leading-headline); }
+h5 { font-size: var(--text-h5); line-height: var(--leading-headline); }
+h6 { font-size: var(--text-h6); line-height: var(--leading-headline); }
+
+p {
+  margin: 0 0 var(--space-4);
+  max-width: 65ch;
+  line-height: var(--leading-relaxed);
+}
+p.lede {
+  font-size: var(--text-body-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--text-muted);
+  font-weight: 350;
+  max-width: 56ch;
+}
+
+small, .caption {
+  font-size: var(--text-caption);
+  color: var(--text-muted);
+  line-height: var(--leading-loose);
+}
+
+/* The Vynatix signature: bronze-tracked eyebrow */
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: var(--text-eyebrow);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  line-height: 16px;
+  color: var(--text-accent);
+}
+
+a {
+  color: var(--md-sys-color-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--indicator);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition: text-decoration-thickness var(--duration-quick) var(--ease-vynatix),
+              color var(--duration-quick) var(--ease-vynatix);
+}
+a:hover {
+  text-decoration-thickness: 2px;
+  color: var(--primary-hover);
+}
+a:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--md-sys-color-surface);
+}
+a:not([class]):focus-visible { border-radius: var(--radius-xs); }
+
+strong, b { font-weight: 600; color: inherit; }
+em, i    { font-style: italic; }
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--md-sys-color-outline-variant);
+  margin: var(--space-8) 0;
+}
+
+/* Pull-quote — Fraunces italic, the editorial voice */
+blockquote {
+  margin: var(--space-10) 0;
+  padding: 0 var(--space-8);
+  border-left: 2px solid var(--indicator);
+  font-family: var(--font-editorial);
+  font-size: clamp(22px, 2.6vw, 32px);
+  line-height: var(--leading-headline);
+  font-style: italic;
+  color: var(--text-display);
+  max-width: 56ch;
+}
+
+/* .editorial — opt-in serif setting for considered writing */
+.editorial {
+  font-family: var(--font-editorial);
+  line-height: var(--leading-relaxed);
+}
+blockquote cite {
+  display: block;
+  margin-top: var(--space-4);
+  font-family: var(--font-body);
+  font-style: normal;
+  font-size: var(--text-label);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* Code */
+code, pre, kbd, samp {
+  font-family: var(--font-mono);
+  font-feature-settings: 'calt' 1, 'liga' 0;
+}
+code {
+  font-size: 0.92em;
+  padding: 0.1em 0.4em;
+  border-radius: var(--radius-xs);
+  background: var(--md-sys-color-surface-container-high);
+  color: var(--text-body);
+}
+pre {
+  margin: var(--space-6) 0;
+  padding: var(--space-5);
+  background: var(--md-sys-color-surface-container-high);
+  color: var(--text-body);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  overflow-x: auto;
+  font-size: var(--text-body-sm);
+  line-height: 1.55;
+}
+pre code { padding: 0; background: transparent; }
+kbd {
+  font-size: 0.85em;
+  padding: 0.15em 0.5em;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-bottom-width: 2px;
+  border-radius: var(--radius-sm);
+  background: var(--md-sys-color-surface-container-low);
+}
+
+/* Lists */
+ul, ol {
+  padding-left: 1.4em;
+  margin: 0 0 var(--space-4);
+  line-height: var(--leading-relaxed);
+}
+ul { list-style: none; padding-left: 0; }
+ul > li {
+  position: relative;
+  padding-left: 1.4em;
+  margin-bottom: var(--space-2);
+}
+ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 14px;
+  height: 1px;
+  background: var(--indicator);
+}
+ol { list-style: decimal; }
+ol > li { margin-bottom: var(--space-2); padding-left: 0.4em; }
+
+/* Tables */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: var(--text-body-sm);
+  margin: var(--space-6) 0;
+}
+th, td {
+  text-align: left;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  vertical-align: top;
+}
+th {
+  font-weight: 600;
+  font-size: var(--text-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  color: var(--text-muted);
+  border-bottom-color: var(--md-sys-color-outline);
+}
+
+/* Forms — minimal honest defaults */
+input, select, textarea, button {
+  font: inherit;
+  color: inherit;
+}
+input[type="text"], input[type="email"], input[type="search"],
+input[type="password"], input[type="url"], input[type="tel"],
+input[type="number"], select, textarea {
+  appearance: none;
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--md-sys-color-surface-container-low);
+  color: var(--text-body);
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--radius-md);
+  transition: border-color var(--duration-quick) var(--ease-vynatix),
+              box-shadow  var(--duration-quick) var(--ease-vynatix);
+}
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):focus-visible,
+select:focus-visible, textarea:focus-visible {
+  outline: none;
+  border-color: var(--focus-ring);
+  box-shadow: 0 0 0 2px var(--md-sys-color-surface),
+              0 0 0 4px var(--focus-ring);
+}
+::placeholder { color: var(--text-muted); opacity: 1; }
+
+/* --------------------------------------------------------------------------
+   13. Buttons — primary, secondary, tertiary, ghost
+   -------------------------------------------------------------------------- */
+
+.btn {
+  --_bg:   var(--md-sys-color-primary);
+  --_fg:   var(--md-sys-color-on-primary);
+  --_brd:  transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 12px 20px;
+  min-height: 44px;
+  font-family: var(--font-body);
+  font-size: var(--text-body-sm);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: var(--_fg);
+  background: var(--_bg);
+  border: 1px solid var(--_brd);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background var(--duration-quick) var(--ease-vynatix),
+              color      var(--duration-quick) var(--ease-vynatix),
+              transform  var(--duration-quick) var(--ease-vynatix),
+              box-shadow var(--duration-quick) var(--ease-vynatix);
+}
+.btn:hover  { filter: brightness(1.06); }
+a.btn:hover { color: var(--_fg); }
+.btn:active { transform: scale(0.985); }
+.btn:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--md-sys-color-surface);
+}
+.btn:disabled, .btn[aria-disabled="true"] {
+  opacity: 0.38;
+  cursor: not-allowed;
+  filter: none;
+}
+
+.btn--secondary {
+  --_bg: transparent;
+  --_fg: var(--md-sys-color-primary);
+  --_brd: var(--md-sys-color-outline);
+}
+.btn--secondary:hover { background: var(--md-sys-color-surface-container-high); }
+
+.btn--tertiary {
+  --_bg: var(--md-sys-color-tertiary);
+  --_fg: var(--md-sys-color-on-tertiary);
+}
+/* Darken, not brighten: white on Bronze would drop below 4.5:1 */
+.btn--tertiary:hover { filter: brightness(0.94); }
+
+.btn--ghost {
+  --_bg: transparent;
+  --_fg: var(--md-sys-color-primary);
+}
+.btn--ghost:hover { background: var(--md-sys-color-surface-container-low); }
+
+.btn--lg { min-height: 52px; padding: 16px 28px; font-size: var(--text-body-md); }
+.btn--sm { min-height: 36px; padding: 8px 14px;  font-size: var(--text-label); }
+
+/* --------------------------------------------------------------------------
+   14. Card — outlined and elevated variants
+   -------------------------------------------------------------------------- */
+
+.card {
+  background: var(--md-sys-color-surface-container-low);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-l1);
+  transition: box-shadow var(--duration-short) var(--ease-vynatix),
+              background var(--duration-short) var(--ease-vynatix);
+}
+.card--outlined {
+  background: var(--md-sys-color-surface);
+  box-shadow: none;
+  border: 1px solid var(--md-sys-color-outline-variant);
+}
+.card--filled {
+  background: var(--md-sys-color-surface-container);
+  box-shadow: none;
+}
+.card--interactive { cursor: pointer; }
+.card--interactive:hover {
+  background: var(--md-sys-color-surface-container);
+  box-shadow: var(--shadow-l2);
+}
+
+/* --------------------------------------------------------------------------
+   15. Glass surface helpers — for chrome only
+   -------------------------------------------------------------------------- */
+
+.glass {
+  background: var(--glass-tint-surface);
+  backdrop-filter: var(--glass-blur-regular);
+  -webkit-backdrop-filter: var(--glass-blur-regular);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: var(--glass-specular, var(--glass-specular-light)), var(--shadow-l2);
+}
+.glass--primary {
+  background: var(--glass-tint-primary);
+  color: var(--glass-on-primary);
+}
+.glass--accent {
+  background: var(--glass-tint-accent);
+  color: var(--md-sys-color-on-surface);
+}
+
+/* --------------------------------------------------------------------------
+   16. Utility: layout containers
+   -------------------------------------------------------------------------- */
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: var(--space-6);
+}
+.container--wide    { max-width: 1440px; }
+.container--reading { max-width: 720px; }
+
+/* --------------------------------------------------------------------------
+   17. Reduced motion respects
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   18. Icons: Material Symbols Outlined, the one icon library
+   --------------------------------------------------------------------------
+   <span class="ms" aria-hidden="true">search</span> renders the glyph by
+   its ligature name. The font is fonts/MaterialSymbolsOutlined.woff2
+   (variable: FILL, wght, GRAD, opsz); the sizes, weight, grades and fill
+   values are tokens.json (icon). The approved set is assets/Icons, with
+   the same glyphs as SVG files for code that inlines them.
+   -------------------------------------------------------------------------- */
+
+:root { --icon-grade: var(--icon-grade-light); }
+[data-theme$="dark"] { --icon-grade: var(--icon-grade-dark); }
+
+.ms {
+  font-family: var(--font-icon);
+  font-weight: normal;
+  font-style: normal;
+  font-size: var(--icon-size-lg);
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  vertical-align: middle;
+  flex-shrink: 0;
+  user-select: none;
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: 'FILL' var(--icon-fill, 0), 'wght' var(--icon-weight),
+                           'GRAD' var(--icon-grade), 'opsz' var(--icon-opsz, 24);
+}
+.ms--sm  { font-size: var(--icon-size-sm);  --icon-opsz: 20; }
+.ms--md  { font-size: var(--icon-size-md);  --icon-opsz: 20; }
+.ms--lg  { font-size: var(--icon-size-lg);  --icon-opsz: 24; }
+.ms--xl  { font-size: var(--icon-size-xl);  --icon-opsz: 40; }
+.ms--2xl { font-size: var(--icon-size-2xl); --icon-opsz: 48; }
+/* Filled only for the selected navigation item and a toggled control. */
+.ms--filled,
+[aria-current="page"] > .ms,
+[aria-selected="true"] > .ms,
+[aria-pressed="true"] > .ms { --icon-fill: var(--icon-fill-active); }
+
