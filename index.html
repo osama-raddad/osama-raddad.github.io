@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="mono-light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,13 +24,13 @@
 <meta name="twitter:image" content="https://osama-raddad.github.io/assets/og.png">
 <meta name="twitter:image:alt" content="Osama Raddad, Android Team Lead at Vynatix, Gothenburg, Sweden.">
 <meta name="color-scheme" content="light dark">
-<meta name="theme-color" content="#f4f2ee" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#1f1d1a" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F5F1EA">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="preload" href="assets/fonts/source-serif-4-roman.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/schibsted-grotesk.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/source-code-pro.woff2" as="font" type="font/woff2" crossorigin media="(min-width: 70rem)">
+<link rel="preload" href="assets/fonts/geist-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/fraunces-italic-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/colors_and_type.css">
 <link rel="stylesheet" href="assets/site.css">
 <script src="assets/site.js"></script>
 <script type="application/ld+json">
@@ -74,34 +74,65 @@
 </script>
 </head>
 <body>
-<a class="skip" href="#about">Skip to content</a>
+<!-- Rendered nowhere: the glass header's two lens filters (styles in assets/site.css, "Liquid Glass"). -->
+<svg class="svg-defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <filter id="vx-lens" x="0" y="0" width="1" height="1" primitiveUnits="objectBoundingBox" color-interpolation-filters="sRGB"><feImage href="assets/glass-lens-wide.svg" x="0" y="0" width="1" height="1" preserveAspectRatio="none" result="map"/><feDisplacementMap in="SourceGraphic" in2="map" scale="0.06" xChannelSelector="R" yChannelSelector="G"/></filter>
+  <filter id="vx-lens-narrow" x="0" y="0" width="1" height="1" primitiveUnits="objectBoundingBox" color-interpolation-filters="sRGB"><feImage href="assets/glass-lens-narrow.svg" x="0" y="0" width="1" height="1" preserveAspectRatio="none" result="map"/><feDisplacementMap in="SourceGraphic" in2="map" scale="0.12" xChannelSelector="R" yChannelSelector="G"/></filter>
+</svg>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" role="banner">
+  <div class="site-header__inner">
+    <a href="#top" class="site-header__logo">Osama <em>Raddad</em></a>
+    <button class="icon-btn mobile-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav">
+      <svg class="icon icon--menu" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M140-254.62V-300h680v45.38H140Zm0-202.69v-45.38h680v45.38H140ZM140-660v-45.38h680V-660H140Z"/></svg>
+      <svg class="icon icon--close" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m250.92-218.92-32-32L448-480 218.92-709.08l32-32L480-512l229.08-229.08 32 32L512-480l229.08 229.08-32 32L480-448 250.92-218.92Z"/></svg>
+    </button>
+    <nav class="site-header__nav" id="primary-nav" aria-label="Sections">
+      <ul class="site-header__list list-reset">
+        <li><a href="#about" class="site-header__link">About</a></li>
+        <li><a href="#work" class="site-header__link">Work</a></li>
+        <li><a href="#experience" class="site-header__link">Experience</a></li>
+        <li><a href="#writing" class="site-header__link">Writing</a></li>
+        <li><a href="#faq" class="site-header__link">FAQ</a></li>
+        <li><a href="#contact" class="site-header__link">Contact</a></li>
+        <li class="site-header__menu-cta"><a href="mailto:osama.s.raddad@gmail.com" class="site-header__link">Email me</a></li>
+      </ul>
+    </nav>
+    <div class="site-header__tools">
+      <button class="icon-btn theme-toggle" type="button" title="Dark theme" aria-label="Dark theme" aria-pressed="false">
+        <svg class="icon icon--dark" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M481.15-140q-141.66 0-240.83-99.17-99.16-99.16-99.16-240.83 0-135.77 92.11-232.88 92.11-97.12 225.57-105.2 4.16 0 9.12.31 4.96.31 13.96.49-27.15 30.9-41.96 71.74-14.81 40.85-14.81 85.54 0 98.33 68.84 167.17Q562.82-424 661.15-424q44.31 0 85.35-13.69 41.04-13.69 71.5-38.61.23 7.38.54 11.23.3 3.84.3 7.38-7.69 133.46-104.8 225.57Q616.92-140 481.15-140Zm0-45.39q103.23 0 181.35-62.49 78.11-62.5 101.19-149.66-23.46 9.46-49.82 14.19-26.36 4.74-52.72 4.74-116.92 0-199.15-82.23T379.77-660q0-23.23 4.42-48.62 4.42-25.38 15.5-56.15-92.61 28.16-152.88 107.47-60.27 79.31-60.27 177.3 0 122.77 85.92 208.69t208.69 85.92Zm-5.53-289.69Z"/></svg>
+        <svg class="icon icon--light" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M575.15-384.85q39.46-39.46 39.46-95.15 0-55.69-39.46-95.15-39.46-39.46-95.15-39.46-55.69 0-95.15 39.46-39.46 39.46-39.46 95.15 0 55.69 39.46 95.15 39.46 39.46 95.15 39.46 55.69 0 95.15-39.46Zm-222.61 32.31Q300-405.08 300-480q0-74.92 52.54-127.46Q405.08-660 480-660q74.92 0 127.46 52.54Q660-554.92 660-480q0 74.92-52.54 127.46Q554.92-300 480-300q-74.92 0-127.46-52.54ZM200-457.31H50v-45.38h150v45.38Zm710 0H760v-45.38h150v45.38ZM457.31-760v-150h45.38v150h-45.38Zm0 710v-150h45.38v150h-45.38ZM267.39-662.62l-93.08-90.46 32.23-33.61L296.77-694l-29.38 31.38Zm486.69 488.7-91.46-92.7L693.61-298l92.08 91.08-31.61 33ZM662-693.61l91.08-92.08 33.61 31.61-92.08 91.46L662-693.61ZM173.92-206.54 266-298l31.23 31.23-90.69 92.85-32.62-32.62ZM480-480Z"/></svg>
+      </button>
+      <a href="mailto:osama.s.raddad@gmail.com" class="btn btn--sm site-header__cta">Email me</a>
+    </div>
+  </div>
+</header>
 
 <main id="main">
 
-<!-- The masthead sits inside main, so the page's h1 and its one-line summary are part of the main content. -->
+<!-- The hero sits inside main, so the page's h1 and its one-line summary are part of the main content. -->
 <div class="masthead grid" id="top">
-  <div class="theme-slot" data-theme-slot></div>
-
-  <h1 class="name name--stack">Osama Raddad</h1>
-  <p class="role"><span class="role-a">Android Team Lead at Vynatix</span><span class="vh"> · </span><span class="role-b">Gothenburg, Sweden</span></p>
-  <p class="positioning">I lead an Android team in Gothenburg, work on Android Automotive, and write Kotlin libraries for crash recovery, dependency injection and transactional state.</p>
-  <p class="cta">
-    <a class="cta-primary" href="#work">See the work</a>
-    <a class="cta-secondary" href="mailto:osama.s.raddad@gmail.com">Email me</a>
+  <p class="eyebrow hero-role">Android Team Lead at Vynatix<span aria-hidden="true"> · </span><span class="vh">, </span>Gothenburg, Sweden</p>
+  <h1 class="hero-name">Osama <em>Raddad</em></h1>
+  <p class="hero-lede">I lead an Android team in Gothenburg, work on Android Automotive, and write Kotlin libraries for crash recovery, dependency injection and transactional state.</p>
+  <p class="hero-ctas">
+    <a class="btn btn--lg" href="#work">See the work <svg class="icon icon--md" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M693.69-457.31H180v-45.38h513.69L448.39-748 480-780l300 300-300 300-31.61-32 245.3-245.31Z"/></svg></a>
+    <a class="btn btn--lg btn--secondary" href="mailto:osama.s.raddad@gmail.com">Email me</a>
   </p>
 
-  <ul class="quick-facts" aria-label="Quick facts">
+  <ul class="quick-facts list-reset" aria-label="Quick facts">
     <li class="qf"><span class="qf-fig">10+</span> <span class="qf-cap">years of Android</span></li>
     <li class="qf"><span class="qf-cap">FireCrasher</span><span class="vh"> · </span><span class="qf-fig"><a href="https://github.com/osama-raddad/FireCrasher/stargazers">147<span class="star" aria-hidden="true">★</span><span class="vh"> GitHub stars</span></a></span></li>
-    <li class="qf qf--wide"><span class="qf-fig">Android Automotive</span></li>
+    <li class="qf qf--wide"><span class="qf-cap">Works on</span><span class="vh"> </span><span class="qf-fig">Android Automotive</span></li>
   </ul>
 
   <nav class="toc" id="contents" aria-labelledby="toc-label">
-    <p class="toc-label" id="toc-label">Contents</p>
-    <ol>
-      <li><a href="#about"><span class="toc-n">1</span><span class="toc-t">About</span></a></li>
-      <li><a href="#work"><span class="toc-n">2</span><span class="toc-t">Work</span></a>
-        <ol class="toc-sub">
+    <p class="eyebrow toc-label" id="toc-label">Contents</p>
+    <ol class="list-reset">
+      <li><a href="#about"><span class="toc-n">01</span><span class="toc-t">About</span></a></li>
+      <li><a href="#work"><span class="toc-n">02</span><span class="toc-t">Work</span></a>
+        <ol class="toc-sub list-reset">
           <li><a href="#firecrasher"><span class="toc-n">2.1</span><span class="toc-t">FireCrasher</span></a></li>
           <li><a href="#warehouse"><span class="toc-n">2.2</span><span class="toc-t">Warehouse</span></a></li>
           <li><a href="#holdfast"><span class="toc-n">2.3</span><span class="toc-t">Holdfast</span></a></li>
@@ -111,42 +142,25 @@
           <li><a href="#older-work"><span class="toc-n">2.7</span><span class="toc-t">Older work</span></a></li>
         </ol>
       </li>
-      <li><a href="#experience"><span class="toc-n">3</span><span class="toc-t">Experience</span></a></li>
-      <li><a href="#writing"><span class="toc-n">4</span><span class="toc-t">Writing</span></a></li>
-      <li><a href="#community"><span class="toc-n">5</span><span class="toc-t">Community</span></a></li>
-      <li><a href="#faq"><span class="toc-n">6</span><span class="toc-t">FAQ</span></a></li>
-      <li><a href="#contact"><span class="toc-n">7</span><span class="toc-t">Get in touch</span></a></li>
+      <li><a href="#experience"><span class="toc-n">03</span><span class="toc-t">Experience</span></a></li>
+      <li><a href="#writing"><span class="toc-n">04</span><span class="toc-t">Writing</span></a></li>
+      <li><a href="#community"><span class="toc-n">05</span><span class="toc-t">Community</span></a></li>
+      <li><a href="#faq"><span class="toc-n">06</span><span class="toc-t">FAQ</span></a></li>
+      <li><a href="#contact"><span class="toc-n">07</span><span class="toc-t">Get in touch</span></a></li>
     </ol>
   </nav>
 </div>
 
-<nav class="runhead grid" aria-label="Sections">
-  <div class="runhead-in">
-    <a class="rh-name" href="#top">Osama Raddad</a>
-    <ol class="rh-links">
-      <li><a href="#about"><span class="rh-n">1</span> About</a></li>
-      <li><a href="#work"><span class="rh-n">2</span> Work</a></li>
-      <li><a href="#experience"><span class="rh-n">3</span> Experience</a></li>
-      <li><a href="#writing"><span class="rh-n">4</span> Writing</a></li>
-      <li><a href="#community"><span class="rh-n">5</span> Community</a></li>
-      <li><a href="#faq"><span class="rh-n">6</span> FAQ</a></li>
-      <li><a href="#contact"><span class="rh-n">7</span> Get in touch</a></li>
-    </ol>
-    <p class="rh-here" data-here aria-hidden="true" hidden></p>
-    <a class="rh-toc" href="#contents">Contents</a>
-  </div>
-</nav>
-
   <!-- 1 About -->
   <section class="sec grid" id="about" aria-labelledby="about-h">
-    <h2 class="sec-h" id="about-h" data-n="1"><span class="t">About</span></h2>
+    <h2 class="sec-h" id="about-h" data-n="01"><span class="t">About</span></h2>
     <div class="prose about-text">
       <p>I’m an Android engineer in Gothenburg and Android Team Lead at Vynatix. I work on Android Automotive. From 2019 to 2021 I worked on in-vehicle system apps for Volvo Trucks: the media core, the media player and the default launcher. Before that I spent 2017 to 2019 on ArabiaWeather’s Android apps.</p>
       <p>I also write Kotlin libraries in the open. FireCrasher recovers Android apps from uncaught exceptions instead of letting them die. Warehouse wires dependencies with a Kotlin DSL. Holdfast and Hallmark, built at Vynatix, bring transactions and validated types to Kotlin Multiplatform.</p>
     </div>
     <div class="margin about-notes">
       <h3 class="note-h">As of October 2026</h3>
-      <ul class="note-list">
+      <ul class="note-list list-reset">
         <li>Android Team Lead at <a href="https://vynatix.com/">Vynatix</a>, a small software consultancy in Gothenburg that is part of Ultra Group.</li>
         <li>Working on Holdfast, a transactional state library for Kotlin Multiplatform. It is pre-release.</li>
       </ul>
@@ -158,7 +172,7 @@
 
   <!-- 2 Work -->
   <section class="sec grid" id="work" aria-labelledby="work-h">
-    <h2 class="sec-h" id="work-h" data-n="2"><span class="t">Work</span></h2>
+    <h2 class="sec-h" id="work-h" data-n="02"><span class="t">Work</span></h2>
     <p class="key"><mark class="api">Highlighted</mark> names in the listings are the project’s own API.</p>
 
     <!-- 2.1 FireCrasher -->
@@ -169,7 +183,7 @@
 
       <div class="status">
         <p class="status-k" id="firecrasher-st">Status</p>
-        <ul class="stamps" aria-labelledby="firecrasher-st">
+        <ul class="stamps list-reset" aria-labelledby="firecrasher-st">
           <li class="stamp stamp--released">2.x on JitPack</li>
           <li class="stamp stamp--master">3.0 on master</li>
         </ul>
@@ -234,11 +248,11 @@ dependencies {
       </div>
 
       <dl class="meta">
-        <div class="meta-status"><dt>Status</dt><dd><ul class="stamps"><li class="stamp stamp--released">2.x on JitPack</li> <li class="stamp stamp--master">3.0 on master</li></ul></dd></div>
+        <div class="meta-status"><dt>Status</dt><dd><ul class="stamps list-reset"><li class="stamp stamp--released">2.x on JitPack</li> <li class="stamp stamp--master">3.0 on master</li></ul></dd></div>
         <div><dt>Years</dt><dd class="years">2016–2026</dd></div>
-        <div><dt>Facts</dt><dd><ul class="facts"><li><a href="https://github.com/osama-raddad/FireCrasher/stargazers">147<span aria-hidden="true">★</span><span class="vh"> GitHub stars</span></a></li><li><a href="https://github.com/osama-raddad/FireCrasher/forks">30 forks</a></li><li>Apache-2.0</li></ul></dd></div>
-        <div class="meta-tags"><dt>Built with</dt><dd><ul class="tags"><li>Kotlin</li><li>Android</li><li>AndroidX Activity</li><li>Robolectric</li><li>GitHub Actions</li><li>JitPack</li></ul></dd></div>
-        <div class="meta-links"><dt>Links</dt><dd><ul class="links">
+        <div><dt>Facts</dt><dd><ul class="facts list-reset"><li><a href="https://github.com/osama-raddad/FireCrasher/stargazers">147<span aria-hidden="true">★</span><span class="vh"> GitHub stars</span></a></li><li><a href="https://github.com/osama-raddad/FireCrasher/forks">30 forks</a></li><li>Apache-2.0</li></ul></dd></div>
+        <div class="meta-tags"><dt>Built with</dt><dd><ul class="tags list-reset"><li>Kotlin</li><li>Android</li><li>AndroidX Activity</li><li>Robolectric</li><li>GitHub Actions</li><li>JitPack</li></ul></dd></div>
+        <div class="meta-links"><dt>Links</dt><dd><ul class="links list-reset">
           <li><a href="https://github.com/osama-raddad/FireCrasher"><span class="vh">FireCrasher </span>Repo</a></li>
           <li><a href="https://osama-raddad.github.io/FireCrasher/"><span class="vh">FireCrasher </span>Docs</a> (3.0 API on master, not yet on JitPack)</li>
           <li><a href="https://github.com/osama-raddad/FireCrasher/tree/2.0.0">2.0.0 README</a></li>
@@ -255,7 +269,7 @@ dependencies {
 
       <div class="status">
         <p class="status-k" id="warehouse-st">Status</p>
-        <ul class="stamps" aria-labelledby="warehouse-st">
+        <ul class="stamps list-reset" aria-labelledby="warehouse-st">
           <li class="stamp stamp--released">Released · 1.6.8x</li>
         </ul>
       </div>
@@ -303,11 +317,11 @@ dependencies {
       </div>
 
       <dl class="meta">
-        <div class="meta-status"><dt>Status</dt><dd><ul class="stamps"><li class="stamp stamp--released">Released · 1.6.8x</li></ul></dd></div>
+        <div class="meta-status"><dt>Status</dt><dd><ul class="stamps list-reset"><li class="stamp stamp--released">Released · 1.6.8x</li></ul></dd></div>
         <div><dt>Years</dt><dd class="years">2022</dd></div>
-        <div><dt>Facts</dt><dd><ul class="facts"><li><a href="https://github.com/osama-raddad/Warehouse/stargazers">19<span aria-hidden="true">★</span><span class="vh"> GitHub stars</span></a></li><li>Apache-2.0</li></ul></dd></div>
-        <div class="meta-tags"><dt>Built with</dt><dd><ul class="tags"><li>Kotlin/JVM</li><li>kotlin-reflect</li><li>JUnit 5</li><li>MockK</li><li>Detekt</li><li>Dokka</li><li>JitPack</li></ul></dd></div>
-        <div class="meta-links"><dt>Links</dt><dd><ul class="links">
+        <div><dt>Facts</dt><dd><ul class="facts list-reset"><li><a href="https://github.com/osama-raddad/Warehouse/stargazers">19<span aria-hidden="true">★</span><span class="vh"> GitHub stars</span></a></li><li>Apache-2.0</li></ul></dd></div>
+        <div class="meta-tags"><dt>Built with</dt><dd><ul class="tags list-reset"><li>Kotlin/JVM</li><li>kotlin-reflect</li><li>JUnit 5</li><li>MockK</li><li>Detekt</li><li>Dokka</li><li>JitPack</li></ul></dd></div>
+        <div class="meta-links"><dt>Links</dt><dd><ul class="links list-reset">
           <li><a href="https://github.com/osama-raddad/Warehouse"><span class="vh">Warehouse </span>Repo</a></li>
           <li><a href="https://osama-raddad.github.io/Warehouse/"><span class="vh">Warehouse </span>Docs</a></li>
           <li><a href="https://osama-raddad.github.io/Warehouse/html/"><span class="vh">Warehouse </span>API reference</a> (Dokka, 2022)</li>
@@ -323,7 +337,7 @@ dependencies {
 
       <div class="status">
         <p class="status-k" id="holdfast-st">Status</p>
-        <ul class="stamps" aria-labelledby="holdfast-st">
+        <ul class="stamps list-reset" aria-labelledby="holdfast-st">
           <li class="stamp stamp--pre">Pre-release · not yet published</li>
         </ul>
       </div>
@@ -355,10 +369,10 @@ dependencies {
       </div>
 
       <dl class="meta">
-        <div class="meta-status"><dt>Status</dt><dd><ul class="stamps"><li class="stamp stamp--pre">Pre-release · not yet published</li></ul></dd></div>
+        <div class="meta-status"><dt>Status</dt><dd><ul class="stamps list-reset"><li class="stamp stamp--pre">Pre-release · not yet published</li></ul></dd></div>
         <div><dt>Years</dt><dd class="years">2026 <span class="years-note">(Vault: <span class="nowrap">2024–2025)</span></span></dd></div>
-        <div><dt>Facts</dt><dd><ul class="facts"><li>Apache-2.0</li><li>0.x</li></ul></dd></div>
-        <div class="meta-tags"><dt>Built with</dt><dd><ul class="tags"><li>Kotlin Multiplatform</li><li>Coroutines</li><li>Compose Multiplatform</li><li>Android</li><li>iOS</li><li>JVM</li></ul></dd></div>
+        <div><dt>Facts</dt><dd><ul class="facts list-reset"><li>Apache-2.0</li><li>0.x</li></ul></dd></div>
+        <div class="meta-tags"><dt>Built with</dt><dd><ul class="tags list-reset"><li>Kotlin Multiplatform</li><li>Coroutines</li><li>Compose Multiplatform</li><li>Android</li><li>iOS</li><li>JVM</li></ul></dd></div>
       </dl>
     </article>
 
@@ -370,7 +384,7 @@ dependencies {
 
       <div class="status">
         <p class="status-k" id="hallmark-st">Status</p>
-        <ul class="stamps" aria-labelledby="hallmark-st">
+        <ul class="stamps list-reset" aria-labelledby="hallmark-st">
           <li class="stamp stamp--pre">Pre-release · not yet published</li>
         </ul>
       </div>
@@ -406,11 +420,11 @@ dependencies {
       </div>
 
       <dl class="meta">
-        <div class="meta-status"><dt>Status</dt><dd><ul class="stamps"><li class="stamp stamp--pre">Pre-release · not yet published</li></ul></dd></div>
+        <div class="meta-status"><dt>Status</dt><dd><ul class="stamps list-reset"><li class="stamp stamp--pre">Pre-release · not yet published</li></ul></dd></div>
         <div><dt>Years</dt><dd class="years">2026 <span class="years-note">(Uncivilized: <span class="nowrap">2022–2023)</span></span></dd></div>
-        <div><dt>Facts</dt><dd><ul class="facts"><li>Hallmark <span class="nowrap">Apache-2.0</span></li><li>Uncivilized has no license file</li></ul></dd></div>
-        <div class="meta-tags"><dt>Built with</dt><dd><ul class="tags"><li>Kotlin Multiplatform</li><li>Coroutines</li><li>Android</li><li>iOS</li><li>JVM</li></ul></dd></div>
-        <div class="meta-links"><dt>Links</dt><dd><ul class="links">
+        <div><dt>Facts</dt><dd><ul class="facts list-reset"><li>Hallmark <span class="nowrap">Apache-2.0</span></li><li>Uncivilized has no license file</li></ul></dd></div>
+        <div class="meta-tags"><dt>Built with</dt><dd><ul class="tags list-reset"><li>Kotlin Multiplatform</li><li>Coroutines</li><li>Android</li><li>iOS</li><li>JVM</li></ul></dd></div>
+        <div class="meta-links"><dt>Links</dt><dd><ul class="links list-reset">
           <li><a href="https://github.com/Vynatix/hallmark"><span class="vh">Hallmark </span>Repo</a></li>
           <li><a href="https://github.com/osama-raddad/Uncivilized">Earlier take</a></li>
         </ul></dd></div>
@@ -425,7 +439,7 @@ dependencies {
 
       <div class="status">
         <p class="status-k" id="gentle-palette-st">Status</p>
-        <ul class="stamps" aria-labelledby="gentle-palette-st">
+        <ul class="stamps list-reset" aria-labelledby="gentle-palette-st">
           <li class="stamp stamp--released">Released · 0.1.3</li>
           <li class="stamp stamp--master"><span class="vh">(</span>round() unreleased<span class="vh">)</span></li>
         </ul>
@@ -459,11 +473,11 @@ dependencies {
       </div>
 
       <dl class="meta">
-        <div class="meta-status"><dt>Status</dt><dd><ul class="stamps"><li class="stamp stamp--released">Released · 0.1.3</li> <li class="stamp stamp--master"><span class="vh">(</span>round() unreleased<span class="vh">)</span></li></ul></dd></div>
+        <div class="meta-status"><dt>Status</dt><dd><ul class="stamps list-reset"><li class="stamp stamp--released">Released · 0.1.3</li> <li class="stamp stamp--master"><span class="vh">(</span>round() unreleased<span class="vh">)</span></li></ul></dd></div>
         <div><dt>Years</dt><dd class="years">2017–2026</dd></div>
-        <div><dt>Facts</dt><dd><ul class="facts"><li><a href="https://github.com/osama-raddad/gentle-palette/stargazers">1<span aria-hidden="true">★</span><span class="vh"> GitHub stars</span></a></li><li>Apache-2.0</li></ul></dd></div>
-        <div class="meta-tags"><dt>Built with</dt><dd><ul class="tags"><li>Java</li><li>Android</li><li>JitPack</li><li>JUnit 4</li></ul></dd></div>
-        <div class="meta-links"><dt>Links</dt><dd><ul class="links">
+        <div><dt>Facts</dt><dd><ul class="facts list-reset"><li><a href="https://github.com/osama-raddad/gentle-palette/stargazers">1<span aria-hidden="true">★</span><span class="vh"> GitHub stars</span></a></li><li>Apache-2.0</li></ul></dd></div>
+        <div class="meta-tags"><dt>Built with</dt><dd><ul class="tags list-reset"><li>Java</li><li>Android</li><li>JitPack</li><li>JUnit 4</li></ul></dd></div>
+        <div class="meta-links"><dt>Links</dt><dd><ul class="links list-reset">
           <li><a href="https://github.com/osama-raddad/gentle-palette"><span class="vh">gentle-palette </span>Repo</a></li>
         </ul></dd></div>
       </dl>
@@ -477,7 +491,7 @@ dependencies {
 
       <div class="status">
         <p class="status-k" id="vin-dating-app-st">Status</p>
-        <ul class="stamps" aria-labelledby="vin-dating-app-st">
+        <ul class="stamps list-reset" aria-labelledby="vin-dating-app-st">
           <li class="stamp stamp--poc">Proof of concept</li>
         </ul>
       </div>
@@ -510,17 +524,17 @@ dependencies {
       </div>
 
       <dl class="meta">
-        <div class="meta-status"><dt>Status</dt><dd><ul class="stamps"><li class="stamp stamp--poc">Proof of concept</li></ul></dd></div>
+        <div class="meta-status"><dt>Status</dt><dd><ul class="stamps list-reset"><li class="stamp stamp--poc">Proof of concept</li></ul></dd></div>
         <div><dt>Years</dt><dd class="years">2025</dd></div>
-        <div><dt>Facts</dt><dd><ul class="facts"><li>Kotlin Multiplatform</li><li>4 platforms</li><li>no license file</li></ul></dd></div>
-        <div class="meta-tags"><dt>Built with</dt><dd><ul class="tags"><li>Kotlin Multiplatform</li><li>Compose Multiplatform</li><li>Material 3</li><li>Ktor</li><li>Kotlin/Wasm</li><li>SwiftUI</li></ul></dd></div>
+        <div><dt>Facts</dt><dd><ul class="facts list-reset"><li>Kotlin Multiplatform</li><li>4 platforms</li><li>no license file</li></ul></dd></div>
+        <div class="meta-tags"><dt>Built with</dt><dd><ul class="tags list-reset"><li>Kotlin Multiplatform</li><li>Compose Multiplatform</li><li>Material 3</li><li>Ktor</li><li>Kotlin/Wasm</li><li>SwiftUI</li></ul></dd></div>
       </dl>
     </article>
 
     <!-- 2.7 Older work -->
     <section class="archive" id="older-work" aria-labelledby="older-work-h">
       <h3 class="proj-h" id="older-work-h" data-n="2.7"><span class="t">Older work</span></h3>
-      <ul class="archive-list">
+      <ul class="archive-list list-reset">
         <li><a href="https://github.com/osama-raddad/Slick-Slider">Slick-Slider</a> <span class="yr">(2018)</span>: auto-playing timeline slider views for Android, with right-to-left variants.</li>
         <li><a href="https://github.com/osama-raddad/Shaper">Shaper</a> <span class="yr">(2018)</span>: splits Activities and Fragments into lifecycle-aware components, each with its own RxJava disposables.</li>
         <li><a href="https://github.com/osama-raddad/Semple-Weather">Semple-Weather</a> <span class="yr">(2018)</span>: a small Kotlin weather app, with an Express backend.</li>
@@ -529,10 +543,10 @@ dependencies {
   </section>
 
   <!-- 3 Experience -->
-  <section class="sec grid" id="experience" aria-labelledby="experience-h">
-    <h2 class="sec-h" id="experience-h" data-n="3"><span class="t">Experience</span></h2>
+  <section class="sec sec--surface grid" id="experience" aria-labelledby="experience-h">
+    <h2 class="sec-h" id="experience-h" data-n="03"><span class="t">Experience</span></h2>
     <p class="sec-intro">Over ten years of Android engineering.</p>
-    <ol class="timeline">
+    <ol class="timeline list-reset">
       <li class="entry">
         <h3 class="entry-h"><span class="when">Now</span><span class="vh"> · </span><span class="what">Vynatix, Gothenburg</span></h3>
         <div class="entry-body prose">
@@ -571,9 +585,9 @@ dependencies {
 
   <!-- 4 Writing -->
   <section class="sec grid" id="writing" aria-labelledby="writing-h">
-    <h2 class="sec-h" id="writing-h" data-n="4"><span class="t">Writing</span></h2>
+    <h2 class="sec-h" id="writing-h" data-n="04"><span class="t">Writing</span></h2>
     <h3 class="sub-h">Recent, 2023–2025</h3>
-    <ol class="writing">
+    <ol class="writing list-reset">
       <li class="piece" itemscope itemtype="https://schema.org/Article">
         <meta itemprop="author" content="Osama Raddad">
         <p class="piece-meta"><time datetime="2025-08-25" itemprop="datePublished">2025-08-25</time> <span class="pub" itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><span itemprop="name">Medium</span></span></p>
@@ -616,7 +630,7 @@ dependencies {
       </li>
     </ol>
     <h3 class="sub-h">Archive, 2019–2020</h3>
-    <ol class="writing">
+    <ol class="writing list-reset">
       <li class="piece" itemscope itemtype="https://schema.org/Article">
         <meta itemprop="author" content="Osama Raddad">
         <p class="piece-meta"><time datetime="2020-09-10" itemprop="datePublished">2020-09-10</time> <span class="pub" itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><span itemprop="name">Medium</span></span></p>
@@ -634,13 +648,13 @@ dependencies {
         </div>
       </li>
     </ol>
-    <p class="more"><a href="https://medium.com/@osamaraddad">More on Medium</a></p>
+    <p class="more-row"><a class="more" href="https://medium.com/@osamaraddad"><span>More on Medium</span> <svg class="icon icon--sm" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m254.92-268.92-32-32L606.15-684H275.08v-45.38h408.77v408.77h-45.39v-331.08L254.92-268.92Z"/></svg></a></p>
   </section>
 
   <!-- 5 Community -->
-  <section class="sec grid" id="community" aria-labelledby="community-h">
-    <h2 class="sec-h" id="community-h" data-n="5"><span class="t">Community</span></h2>
-    <ul class="community">
+  <section class="sec sec--surface grid" id="community" aria-labelledby="community-h">
+    <h2 class="sec-h" id="community-h" data-n="05"><span class="t">Community</span></h2>
+    <ul class="community list-reset">
       <li><span class="what">ArabiaWeather CEO Award</span><span class="vh">, </span><span class="when">2018 and 2019</span></li>
       <li><span class="what">Startup Weekend, second place</span><span class="vh">, </span><span class="when">2017 and 2018</span></li>
       <li><span class="what">Mozilla Rep</span><span class="vh">, </span><span class="when">2015–2016</span></li>
@@ -652,7 +666,7 @@ dependencies {
 
   <!-- 6 FAQ -->
   <section class="sec grid" id="faq" aria-labelledby="faq-h" itemscope itemtype="https://schema.org/FAQPage">
-    <h2 class="sec-h" id="faq-h" data-n="6"><span class="t">FAQ</span></h2>
+    <h2 class="sec-h" id="faq-h" data-n="06"><span class="t">FAQ</span></h2>
     <div class="faq">
       <div class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
         <h3 class="q" itemprop="name">Who is Osama Raddad?</h3>
@@ -706,24 +720,64 @@ dependencies {
   </section>
 
   <!-- 7 Contact -->
-  <section class="sec grid" id="contact" aria-labelledby="contact-h">
-    <h2 class="sec-h" id="contact-h" data-n="7"><span class="t">Get in touch</span></h2>
-    <p class="sec-intro">If you have a question about one of these libraries, or want to work together, email me.</p>
-    <ul class="contact">
-      <li class="contact-email"><span class="contact-k">Email</span><a href="mailto:osama.s.raddad@gmail.com" aria-label="osama.s.raddad@gmail.com">osama.s.<wbr>raddad<wbr>@gmail.com</a></li>
-      <li><span class="contact-k">LinkedIn</span><a href="https://www.linkedin.com/in/osamaraddad/" aria-label="linkedin.com/in/osamaraddad">linkedin.com/in/<wbr>osamaraddad</a></li>
-      <li><span class="contact-k">GitHub</span><a href="https://github.com/osama-raddad" aria-label="github.com/osama-raddad">github.com/<wbr>osama-raddad</a></li>
-      <li><span class="contact-k">Medium</span><a href="https://medium.com/@osamaraddad" aria-label="medium.com/@osamaraddad">medium.com/<wbr>@osamaraddad</a></li>
-    </ul>
+  <section class="sec sec--contact" id="contact" aria-labelledby="contact-h">
+    <div class="band inverse">
+      <div class="band__head">
+        <h2 class="sec-h" id="contact-h" data-n="07"><span class="t">Get <em>in touch</em></span></h2>
+        <p class="sec-intro">If you have a question about one of these libraries, or want to work together, email me.</p>
+      </div>
+      <ul class="contact list-reset">
+        <li class="contact-email"><span class="contact-k">Email</span><a href="mailto:osama.s.raddad@gmail.com" aria-label="osama.s.raddad@gmail.com">osama.s.<wbr>raddad<wbr>@gmail.com</a></li>
+        <li><span class="contact-k">LinkedIn</span><a href="https://www.linkedin.com/in/osamaraddad/" aria-label="linkedin.com/in/osamaraddad">linkedin.com/in/<wbr>osamaraddad</a></li>
+        <li><span class="contact-k">GitHub</span><a href="https://github.com/osama-raddad" aria-label="github.com/osama-raddad">github.com/<wbr>osama-raddad</a></li>
+        <li><span class="contact-k">Medium</span><a href="https://medium.com/@osamaraddad" aria-label="medium.com/@osamaraddad">medium.com/<wbr>@osamaraddad</a></li>
+      </ul>
+    </div>
   </section>
 
 </main>
 
-<footer class="colophon grid">
-  <div class="colophon-inner">
-    <p class="copyright">© 2026 Osama Raddad</p>
-    <p class="stats">Stats and project statuses as of October 2026</p>
-    <p class="about-page">A single static page on GitHub Pages. Each count links to its live GitHub page.</p>
+<footer class="site-footer inverse">
+  <div class="site-footer__in">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <a class="site-footer__logo" href="#top">Osama <em>Raddad</em></a>
+        <p class="site-footer__about">Android Team Lead at Vynatix in Gothenburg. Android Automotive, and open-source Kotlin libraries for crash recovery, dependency injection and transactional state.</p>
+        <p class="site-footer__addr"><a href="mailto:osama.s.raddad@gmail.com">osama.s.raddad@gmail.com</a><br>Gothenburg, Sweden</p>
+      </div>
+      <nav class="site-footer__col" aria-labelledby="f-page">
+        <p class="site-footer__h" id="f-page">On this page</p>
+        <ul class="site-footer__links list-reset">
+          <li><a href="#about">About</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#writing">Writing</a></li>
+          <li><a href="#community">Community</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <nav class="site-footer__col" aria-labelledby="f-elsewhere">
+        <p class="site-footer__h" id="f-elsewhere">Elsewhere</p>
+        <ul class="site-footer__links list-reset">
+          <li><a href="https://www.linkedin.com/in/osamaraddad/">LinkedIn</a></li>
+          <li><a href="https://github.com/osama-raddad">GitHub</a></li>
+          <li><a href="https://medium.com/@osamaraddad">Medium</a></li>
+          <li><a href="https://vynatix.com/">Vynatix</a></li>
+        </ul>
+      </nav>
+      <div class="site-footer__col">
+        <p class="site-footer__h">This site</p>
+        <ul class="site-footer__links list-reset">
+          <li><a href="#top">Back to top</a></li>
+          <li class="motion-item"><button class="motion-toggle" type="button">Pause background motion</button></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__fine">
+      <p>© 2026 Osama Raddad</p>
+      <p>Stats and project statuses as of October 2026</p>
+      <p>A single static page on GitHub Pages. Each count links to its live GitHub page.</p>
+    </div>
   </div>
 </footer>
 </body>

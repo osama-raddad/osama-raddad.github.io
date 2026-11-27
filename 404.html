@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="mono-light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,30 +8,101 @@
 <meta name="description" content="There is no page at this address on osama-raddad.github.io.">
 <meta name="robots" content="noindex">
 <meta name="color-scheme" content="light dark">
-<meta name="theme-color" content="#f4f2ee" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#1f1d1a" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F5F1EA">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="/assets/tokens.css">
+<link rel="stylesheet" href="/assets/colors_and_type.css">
 <link rel="stylesheet" href="/assets/site.css">
 <script src="/assets/site.js"></script>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
+<svg class="svg-defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <filter id="vx-lens" x="0" y="0" width="1" height="1" primitiveUnits="objectBoundingBox" color-interpolation-filters="sRGB"><feImage href="/assets/glass-lens-wide.svg" x="0" y="0" width="1" height="1" preserveAspectRatio="none" result="map"/><feDisplacementMap in="SourceGraphic" in2="map" scale="0.06" xChannelSelector="R" yChannelSelector="G"/></filter>
+  <filter id="vx-lens-narrow" x="0" y="0" width="1" height="1" primitiveUnits="objectBoundingBox" color-interpolation-filters="sRGB"><feImage href="/assets/glass-lens-narrow.svg" x="0" y="0" width="1" height="1" preserveAspectRatio="none" result="map"/><feDisplacementMap in="SourceGraphic" in2="map" scale="0.12" xChannelSelector="R" yChannelSelector="G"/></filter>
+</svg>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<header class="masthead grid">
-  <div class="lost-bar">
-    <a class="lost-home" href="/">Osama Raddad</a>
-    <div class="theme-slot" data-theme-slot></div>
+<header class="site-header" role="banner">
+  <div class="site-header__inner">
+    <a href="/" class="site-header__logo">Osama <em>Raddad</em></a>
+    <button class="icon-btn mobile-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav">
+      <svg class="icon icon--menu" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M140-254.62V-300h680v45.38H140Zm0-202.69v-45.38h680v45.38H140ZM140-660v-45.38h680V-660H140Z"/></svg>
+      <svg class="icon icon--close" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m250.92-218.92-32-32L448-480 218.92-709.08l32-32L480-512l229.08-229.08 32 32L512-480l229.08 229.08-32 32L480-448 250.92-218.92Z"/></svg>
+    </button>
+    <nav class="site-header__nav" id="primary-nav" aria-label="Sections of the home page">
+      <ul class="site-header__list list-reset">
+        <li><a href="/#about" class="site-header__link">About</a></li>
+        <li><a href="/#work" class="site-header__link">Work</a></li>
+        <li><a href="/#experience" class="site-header__link">Experience</a></li>
+        <li><a href="/#writing" class="site-header__link">Writing</a></li>
+        <li><a href="/#faq" class="site-header__link">FAQ</a></li>
+        <li><a href="/#contact" class="site-header__link">Contact</a></li>
+        <li class="site-header__menu-cta"><a href="mailto:osama.s.raddad@gmail.com" class="site-header__link">Email me</a></li>
+      </ul>
+    </nav>
+    <div class="site-header__tools">
+      <button class="icon-btn theme-toggle" type="button" title="Dark theme" aria-label="Dark theme" aria-pressed="false">
+        <svg class="icon icon--dark" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M481.15-140q-141.66 0-240.83-99.17-99.16-99.16-99.16-240.83 0-135.77 92.11-232.88 92.11-97.12 225.57-105.2 4.16 0 9.12.31 4.96.31 13.96.49-27.15 30.9-41.96 71.74-14.81 40.85-14.81 85.54 0 98.33 68.84 167.17Q562.82-424 661.15-424q44.31 0 85.35-13.69 41.04-13.69 71.5-38.61.23 7.38.54 11.23.3 3.84.3 7.38-7.69 133.46-104.8 225.57Q616.92-140 481.15-140Zm0-45.39q103.23 0 181.35-62.49 78.11-62.5 101.19-149.66-23.46 9.46-49.82 14.19-26.36 4.74-52.72 4.74-116.92 0-199.15-82.23T379.77-660q0-23.23 4.42-48.62 4.42-25.38 15.5-56.15-92.61 28.16-152.88 107.47-60.27 79.31-60.27 177.3 0 122.77 85.92 208.69t208.69 85.92Zm-5.53-289.69Z"/></svg>
+        <svg class="icon icon--light" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M575.15-384.85q39.46-39.46 39.46-95.15 0-55.69-39.46-95.15-39.46-39.46-95.15-39.46-55.69 0-95.15 39.46-39.46 39.46-39.46 95.15 0 55.69 39.46 95.15 39.46 39.46 95.15 39.46 55.69 0 95.15-39.46Zm-222.61 32.31Q300-405.08 300-480q0-74.92 52.54-127.46Q405.08-660 480-660q74.92 0 127.46 52.54Q660-554.92 660-480q0 74.92-52.54 127.46Q554.92-300 480-300q-74.92 0-127.46-52.54ZM200-457.31H50v-45.38h150v45.38Zm710 0H760v-45.38h150v45.38ZM457.31-760v-150h45.38v150h-45.38Zm0 710v-150h45.38v150h-45.38ZM267.39-662.62l-93.08-90.46 32.23-33.61L296.77-694l-29.38 31.38Zm486.69 488.7-91.46-92.7L693.61-298l92.08 91.08-31.61 33ZM662-693.61l91.08-92.08 33.61 31.61-92.08 91.46L662-693.61ZM173.92-206.54 266-298l31.23 31.23-90.69 92.85-32.62-32.62ZM480-480Z"/></svg>
+      </button>
+      <a href="mailto:osama.s.raddad@gmail.com" class="btn btn--sm site-header__cta">Email me</a>
+    </div>
   </div>
 </header>
 
 <main id="main" class="lost grid">
-  <h1 class="name"><span>Page not</span><span>found</span></h1>
-  <p class="lost-text">There is no page at this address. It may have moved, or the link may have a typo.</p>
-  <p class="cta">
-    <a class="cta-primary" href="/">Go to the home page</a>
-    <a class="cta-secondary" href="/#work">See the work</a>
+  <p class="eyebrow">Error 404</p>
+  <h1 class="hero-name">Page <em>not found</em></h1>
+  <p class="hero-lede">There is no page at this address. It may have moved, or the link may have a typo.</p>
+  <p class="hero-ctas">
+    <a class="btn btn--lg" href="/">Go to the home page <svg class="icon icon--md" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M693.69-457.31H180v-45.38h513.69L448.39-748 480-780l300 300-300 300-31.61-32 245.3-245.31Z"/></svg></a>
+    <a class="btn btn--lg btn--secondary" href="/#work">See the work</a>
   </p>
 </main>
+
+<footer class="site-footer inverse">
+  <div class="site-footer__in">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <a class="site-footer__logo" href="/">Osama <em>Raddad</em></a>
+        <p class="site-footer__about">Android Team Lead at Vynatix in Gothenburg. Android Automotive, and open-source Kotlin libraries for crash recovery, dependency injection and transactional state.</p>
+        <p class="site-footer__addr"><a href="mailto:osama.s.raddad@gmail.com">osama.s.raddad@gmail.com</a><br>Gothenburg, Sweden</p>
+      </div>
+      <nav class="site-footer__col" aria-labelledby="f-page">
+        <p class="site-footer__h" id="f-page">On the home page</p>
+        <ul class="site-footer__links list-reset">
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#work">Work</a></li>
+          <li><a href="/#experience">Experience</a></li>
+          <li><a href="/#writing">Writing</a></li>
+          <li><a href="/#community">Community</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <nav class="site-footer__col" aria-labelledby="f-elsewhere">
+        <p class="site-footer__h" id="f-elsewhere">Elsewhere</p>
+        <ul class="site-footer__links list-reset">
+          <li><a href="https://www.linkedin.com/in/osamaraddad/">LinkedIn</a></li>
+          <li><a href="https://github.com/osama-raddad">GitHub</a></li>
+          <li><a href="https://medium.com/@osamaraddad">Medium</a></li>
+          <li><a href="https://vynatix.com/">Vynatix</a></li>
+        </ul>
+      </nav>
+      <div class="site-footer__col">
+        <p class="site-footer__h">This site</p>
+        <ul class="site-footer__links list-reset">
+          <li><a href="/">Home page</a></li>
+          <li class="motion-item"><button class="motion-toggle" type="button">Pause background motion</button></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__fine">
+      <p>© 2026 Osama Raddad</p>
+      <p>Stats and project statuses as of October 2026</p>
+      <p>A single static page on GitHub Pages. Each count links to its live GitHub page.</p>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
